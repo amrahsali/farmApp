@@ -13,17 +13,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FarmApp"
         tools:targetApi="31">
-
+        <activity
+            android:name=".WithdrawActivity"
+            android:exported="false" />
         <activity
             android:name=".SplashscreenActivity"
             android:exported="true"
             android:theme="@style/Theme.Design.NoActionBar">
             <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".LoginActivity"
@@ -33,10 +34,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-
-
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>
