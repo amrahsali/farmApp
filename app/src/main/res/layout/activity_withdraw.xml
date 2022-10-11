@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="15sp"
     tools:context=".WithdrawActivity">
 
     <TextView
@@ -15,28 +16,143 @@
         android:gravity="center"
         android:textStyle="bold"
         android:textSize="20sp"/>
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"/>
     <LinearLayout
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:background="@drawable/boarder_bg"
         android:gravity="center"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/green"
         android:orientation="horizontal">
     <TextView
+        android:textColor="@color/white"
+        android:textSize="18sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Balance"/>
+        android:text="Balance:"/>
 
         <Space
             android:layout_width="100dp"
             android:layout_height="wrap_content"/>
 
         <TextView
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="N100,000"/>
 
 
+    </LinearLayout>
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Amount"/>
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="10dp"/>
+    <EditText
+        android:padding="5dp"
+        android:background="@drawable/boarder_bg"
+        android:layout_width="300sp"
+        android:layout_height="40dp"
+        android:hint="N2000"/>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="10dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Withdraw to:"/>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="10dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+<ImageView
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    android:background="@drawable/boarder_bg"
+    android:src="@drawable/mastercard"/>
+       <Space
+        android:layout_width="15dp"
+        android:layout_height="10dp"/>
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/boarder_bg"
+            android:src="@drawable/visa"/>
+        <Space
+            android:layout_width="15dp"
+            android:layout_height="10dp"/>
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/boarder_bg"
+            android:src="@drawable/paypal"/>
 
     </LinearLayout>
+    <Space
+        android:layout_width="15dp"
+        android:layout_height="30dp"/>
+    <TextView
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Card Holder Name"/>
+
+    <Space
+        android:layout_width="15dp"
+        android:layout_height="10dp"/>
+    <EditText
+        android:textSize="20sp"
+        android:padding="5dp"
+        android:background="@drawable/plainboard_bg"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:hint="musa Kabir ishaq"/>
+
+    <Space
+        android:layout_width="15dp"
+        android:layout_height="30dp"/>
+    <TextView
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Card Number"/>
+
+    <Space
+        android:layout_width="15dp"
+        android:layout_height="10dp"/>
+    <EditText
+        android:textSize="20sp"
+        android:padding="5dp"
+        android:background="@drawable/plainboard_bg"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:hint="1234567890  "/>
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"/>
+<Button
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:text="withdraw"/>
+
+
 
 </LinearLayout>
