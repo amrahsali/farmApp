@@ -42,18 +42,10 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<GridRecyclerView
         holder.getProduct_description().setText("tuwo goes well with mian Kuka");
         holder.getProduct_price().setText("N10,000");
 
-        Drawable drawable = context.getResources().getDrawable(R.drawable.oranges);
-        Drawable drawable1 = context.getResources().getDrawable(R.drawable.oranges);
-        holder.getProduct_image().setImageDrawable(drawable);
+//        Drawable drawable = context.getResources().getDrawable(R.drawable.oranges);
+//        Drawable drawable1 = context.getResources().getDrawable(R.drawable.oranges);
+//        holder.getProduct_image().setImageDrawable(drawable);
     }
-
-//    @Override
-//    public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
-//        holder.getP.setText("Kindness");
-//        holder.getAmount().setText("2000");
-//        holder.getStatus().setText("Debit");
-//        holder.getDate().setText("28th sept 2022");
-//    }
 
     @Override
     public int getItemCount() {
