@@ -29,19 +29,20 @@
 
             <Space
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="1dp" />
 
 
             <ImageView
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:background="@drawable/circle_bg"
                 android:src="@drawable/man" />
 
 
         </LinearLayout>
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="12dp" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -71,22 +72,26 @@
             android:layout_height="18dp" />
 
         <TextView
+            android:paddingStart="12dp"
+            android:drawableStart="@drawable/ic_round_search_24"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:gravity="center"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="50dp"
             android:background="@drawable/boarder_bg"
-            android:orientation="vertical"
             android:text="Search here"
             android:textAlignment="center" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
             android:text="Categories"
             android:textSize="18sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"/>
 
         <HorizontalScrollView
             android:layout_width="match_parent"
@@ -174,7 +179,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvNumbers"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent" />
 
         </RelativeLayout>
 

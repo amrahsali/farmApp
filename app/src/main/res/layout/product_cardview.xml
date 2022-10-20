@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:elevation="5dp"
+        android:background="@drawable/boarder_bg"
         android:orientation="horizontal">
 
         <ImageView
@@ -23,7 +24,7 @@
             android:layout_height="wrap_content"
             android:background="#9E9E9E"
             android:scaleType="centerCrop"
-            android:src="@drawable/potatoes" />
+            android:src="@drawable/oranges" />
 
         <RelativeLayout
             android:paddingStart="10dp"

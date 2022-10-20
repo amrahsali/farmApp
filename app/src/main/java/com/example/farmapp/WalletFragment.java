@@ -1,5 +1,6 @@
 package com.example.farmapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -58,4 +59,6 @@ public class WalletFragment extends Fragment {
     public void fundWallet(View view) {
         Toast.makeText(getActivity(), "pop up fund dialog", Toast.LENGTH_SHORT).show();
     }
+
+
 }
