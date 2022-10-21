@@ -38,8 +38,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<GridRecyclerView
 
     @Override
     public void onBindViewHolder(@NonNull GridRecyclerViewHolder holder, int position) {
-        holder.getProduct_name().setText("Tuwo");
-        holder.getProduct_description().setText("tuwo goes well with mian Kuka");
+        holder.getProduct_name().setText("oranges");
+        holder.getProduct_description().setText("reaap oranges for sell");
         holder.getProduct_price().setText("N10,000");
 
 //        Drawable drawable = context.getResources().getDrawable(R.drawable.oranges);
