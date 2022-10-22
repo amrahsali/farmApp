@@ -46,22 +46,6 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@drawable/boarder_bg">
-
-    <EditText
-        android:padding="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:drawableTint="@color/green"
-        android:background="@null"
-        android:drawableStart="@drawable/ic_round_perm_identity_24"
-        android:drawablePadding="10dp"
-        android:hint="name"/>
-    </LinearLayout>
 
     <Space
         android:layout_width="wrap_content"
@@ -72,9 +56,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="@drawable/boarder_bg">
+
         <EditText
+            android:id="@+id/phone_number"
             android:padding="10dp"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="5"
             android:layout_height="50dp"
             android:drawableTint="@color/green"
             android:background="@null"
@@ -82,6 +69,17 @@
             android:drawableStart="@drawable/ic_round_local_phone_24"
             android:drawablePadding="10dp"
             android:hint="phone"/>
+
+        <ImageView
+            android:onClick="Tosend"
+            app:tint="@color/green"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_round_send_24"/>
+
+
     </LinearLayout>
 
     <Space
@@ -100,7 +98,7 @@
         android:background="@null"
         android:drawableStart="@drawable/ic_round_security_24"
         android:drawablePadding="10dp"
-        android:hint="*******"/>
+        android:hint="Enter OTP"/>
 
 </LinearLayout>
 
@@ -110,6 +108,7 @@
     android:layout_height="30dp"/>
 
     <Button
+        android:onClick="ToCreate"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="create"/>
