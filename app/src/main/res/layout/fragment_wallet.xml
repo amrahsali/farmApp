@@ -70,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="10dp"
-                android:text="Total Balance ID"
+                android:text="@string/total_balance_id"
                 android:textSize="20dp" />
 
             <TextView
@@ -103,7 +103,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/green"
                 android:textSize="13sp"
-                android:text="Withdraw"/>
+                android:text="@string/withdraw"/>
             <View
                 android:layout_width="20dp"
                 android:layout_height="match_parent"/>
@@ -113,7 +113,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="13sp"
                 android:backgroundTint="@color/green"
-                android:text="fund wallet"/>
+                android:text="@string/fund_wallet"/>
 
         </LinearLayout>
 

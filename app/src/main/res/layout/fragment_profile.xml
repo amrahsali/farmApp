@@ -18,7 +18,7 @@
               android:paddingEnd="20dp"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:text="My Profile"
+              android:text="@string/my_profile"
               android:textStyle="bold"
               android:textSize="20dp"
               android:gravity="center"/>
@@ -40,7 +40,7 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:textColor="@color/black"
-              android:text="Edit"
+              android:text="@string/edit"
               android:gravity="end"/>
       <LinearLayout
           android:padding="10dp"
@@ -66,7 +66,7 @@
                   <TextView
                       android:layout_width="100dp"
                       android:layout_height="wrap_content"
-                      android:text="Name:"
+                      android:text="@string/name"
                       android:textSize="18dp"/>
                   <Space
                       android:layout_width="50dp"
@@ -103,7 +103,7 @@
                   <TextView
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:text="Phone Number:"
+                      android:text="@string/phone_number"
                       android:textSize="18dp"/>
                   <Space
                       android:layout_width="50dp"
@@ -140,7 +140,7 @@
                   <TextView
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:text="Home address:"
+                      android:text="@string/home_address"
                       android:textSize="18dp"/>
                   <View
                       android:layout_width="50dp"
@@ -178,7 +178,7 @@
                   <TextView
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:text="Farm address:"
+                      android:text="@string/farm_address"
                       android:textSize="18dp"/>
                   <View
                       android:layout_width="50dp"
@@ -217,7 +217,7 @@
                   <TextView
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:text="farm product:"
+                      android:text="@string/farm_product"
                       android:textSize="18dp"/>
                   <View
                       android:layout_width="50dp"
@@ -253,7 +253,7 @@
               <Button
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
-                  android:text="Confirm"
+                  android:text="@string/confirm"
                   android:layout_gravity="center"/>
           </LinearLayout>
       </androidx.cardview.widget.CardView>

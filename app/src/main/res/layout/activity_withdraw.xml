@@ -12,7 +12,7 @@
         android:paddingTop="20sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Withdrawal"
+        android:text="@string/withdrawal"
         android:gravity="center"
         android:textStyle="bold"
         android:textSize="20sp"/>
@@ -32,7 +32,7 @@
         android:textSize="18sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Balance:"/>
+        android:text="@string/balance"/>
 
         <Space
             android:layout_width="100dp"
@@ -55,7 +55,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Amount"/>
+        android:text="@string/amount"/>
     <Space
         android:layout_width="wrap_content"
         android:layout_height="10dp"/>
@@ -72,7 +72,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Withdraw to:"/>
+        android:text="@string/withdraw_to"/>
 
     <Space
         android:layout_width="wrap_content"
@@ -112,7 +112,7 @@
         android:textSize="20sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Card Holder Name"/>
+        android:text="@string/card_holder_name"/>
 
     <Space
         android:layout_width="15dp"
@@ -132,7 +132,7 @@
         android:textSize="20sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Card Number"/>
+        android:text="@string/card_number"/>
 
     <Space
         android:layout_width="15dp"
@@ -151,7 +151,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:text="withdraw"/>
+    android:text="@string/withdrawtbn"/>
 
 
 

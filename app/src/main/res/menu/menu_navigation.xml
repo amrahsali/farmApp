@@ -2,16 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
  <item
      android:id="@+id/product"
-     android:title="product"
+     android:title="@string/product"
      android:icon="@drawable/ic_round_local_florist_24"/>
 
  <item
      android:id="@+id/wallet"
-     android:title="Wallet"
+     android:title="@string/wallet"
      android:icon="@drawable/ic_round_account_balance_wallet_24"/>
 
  <item
      android:id="@+id/profile"
-     android:title="profile"
+     android:title="@string/profile"
      android:icon="@drawable/ic_round_perm_identity_24"/>
 </menu>

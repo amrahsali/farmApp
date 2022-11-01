@@ -20,14 +20,13 @@
 
     </LinearLayout>
 
-
-    <androidx.cardview.widget.CardView
+<androidx.cardview.widget.CardView
         android:layout_width="360dp"
         android:layout_height="400dp"
         android:elevation="6dp"
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
-        android:cardCornerRadius="10dp">
+        >
 
 
         <TextView
@@ -37,7 +36,7 @@
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:textSize="20dp"
-            android:text="Farmer's login"/>
+            android:text="@string/farmer_s_login"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -60,7 +59,7 @@
                     android:phoneNumber="true"
                     android:drawableStart="@drawable/ic_round_local_phone_24"
                     android:drawablePadding="10dp"
-                    android:hint="phone"/>
+                    android:hint="@string/phone"/>
             </LinearLayout>
 
             <Space
@@ -97,11 +96,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="15dp"/>
                 <Button
+                    android:id="@+id/farmersbtn"
                     android:layout_width="match_parent"
                     android:backgroundTint="@color/green"
                     android:layout_height="50dp"
-                    android:text="Log in"
-                    android:onClick="Login"/>
+                    android:text="@string/log_in"/>
 
                 <View
                     android:layout_width="wrap_content"
@@ -110,7 +109,7 @@
                     android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Forgot password?"
+                    android:text="@string/forgot_password"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 

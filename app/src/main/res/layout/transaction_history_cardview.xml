@@ -38,7 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/red"
-                android:text="Debit"/>
+                android:text="@string/debit"/>
 
             <TextView
                 android:id="@+id/date"

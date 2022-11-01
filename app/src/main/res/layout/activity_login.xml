@@ -6,15 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity"
     android:orientation="vertical">
-    <FrameLayout
-        android:id="@+id/container2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:padding="1dp"
-        app:layout_constraintBottom_toTopOf="@+id/loginNavigationView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -28,34 +20,35 @@
     </LinearLayout>
 
 
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:paddingTop="20dp"
-        android:gravity="end"
-        android:orientation="vertical"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <TextView
-            android:paddingEnd="10dp"
-            android:layout_width="wrap_content"
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/loginNavigationView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Change language"
-            android:textSize="15sp" />
-        <CheckBox
-            android:gravity="center"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/menu_registeration" />
+
+        <FrameLayout
+            android:id="@+id/container2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="1dp"
+            app:layout_constraintBottom_toTopOf="@+id/loginNavigationView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </LinearLayout>
 
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/loginNavigationView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu_registeration" />
+
 
 
 
@@ -68,7 +61,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New user?"
+            android:text="@string/new_user"
             android:textSize="15sp" />
 
         <TextView
@@ -76,8 +69,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/green"
-            android:text="Create Account?"
+            android:text="@string/create_account"
             android:textSize="15sp" />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:paddingTop="20dp"
+        android:gravity="end"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:paddingEnd="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/change_language"
+            android:textSize="15sp" />
+        <CheckBox
+            android:gravity="center"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
 </LinearLayout>

@@ -43,7 +43,7 @@
                     android:id="@+id/product_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="potatoes"
+                    android:text="@string/potatoes"
                     android:textColor="@color/black"
                     android:textSize="19sp"
                     android:textStyle="bold" />
@@ -52,7 +52,7 @@
                     android:id="@+id/product_description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="53kg of sweet patatoes, available for sale"
+                    android:text="@string/_53kg_of_sweet_patatoes_available_for_sale"
                     android:textSize="16sp" />
 
 

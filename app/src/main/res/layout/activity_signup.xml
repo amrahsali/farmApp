@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:textSize="20dp"
-            android:text="Sign Up"/>
+            android:text="@string/sign_up"/>
 
 <LinearLayout
     android:layout_width="match_parent"
@@ -68,7 +68,7 @@
             android:phoneNumber="true"
             android:drawableStart="@drawable/ic_round_local_phone_24"
             android:drawablePadding="10dp"
-            android:hint="phone"/>
+            android:hint="@string/phone2"/>
 
         <ImageView
             android:onClick="Tosend"
@@ -98,7 +98,7 @@
         android:background="@null"
         android:drawableStart="@drawable/ic_round_security_24"
         android:drawablePadding="10dp"
-        android:hint="Enter OTP"/>
+        android:hint="@string/enter_otp"/>
 
 </LinearLayout>
 
@@ -111,7 +111,7 @@
         android:onClick="ToCreate"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="create"/>
+        android:text="@string/create"/>
 
 </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
@@ -138,7 +138,7 @@
             android:textColor="@color/black"
             android:backgroundTint="@color/ash"
             android:layout_height="50dp"
-            android:text="Log in"/>
+            android:text="@string/log_in2"/>
 
     </LinearLayout>
 </LinearLayout>
