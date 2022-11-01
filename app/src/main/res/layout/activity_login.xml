@@ -89,6 +89,7 @@
             android:text="@string/change_language"
             android:textSize="15sp" />
         <CheckBox
+            android:id="@+id/checkboxId"
             android:gravity="center"
             android:layout_width="150dp"
             android:layout_height="wrap_content"/>

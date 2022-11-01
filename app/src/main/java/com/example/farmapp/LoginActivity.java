@@ -3,20 +3,59 @@ package com.example.farmapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class LoginActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
 
+    CheckBox checkBox;
+    Context context;
+    Resources resources;
     BottomNavigationView loginNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
+            checkBox = findViewById(R.id.checkboxId);
+
+//            if (checkBox.isChecked()){
+//                context = LocaleHelper.setLocale(this, "hausa");
+//                resources = context.getResources();
+//                Toast.makeText(this, "checkbox is checked", Toast.LENGTH_SHORT).show();
+//            }else {
+//                Toast.makeText(this, "checkbox is unchecked", Toast.LENGTH_SHORT).show();
+//                context = LocaleHelper.setLocale(this, "English");
+//                resources = context.getResources();
+//            }
+            checkBox.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (checkBox.isChecked()) {
+                                context = LocaleHelper.setLocale(context, "hausa");
+                                resources = context.getResources();
+                                //Toast.makeText(this, "checkbox is checked", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "checkbox is checked", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText( context, "checkbox is unchecked", Toast.LENGTH_SHORT).show();
+                                context = LocaleHelper.setLocale(context, "English");
+
+                            }
+                        }
+                    }
+            );
+
 
         loginNavigationView = findViewById(R.id.loginNavigationView);
         loginNavigationView.setOnNavigationItemSelectedListener(this);
@@ -53,4 +92,11 @@ public class LoginActivity extends AppCompatActivity implements BottomNavigation
         Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
         startActivity(intent);
     }
+
+
+
+
+
+
+
 }
