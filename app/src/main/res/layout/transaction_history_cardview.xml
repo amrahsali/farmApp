@@ -6,10 +6,10 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:padding="10dp"
         android:id="@+id/itemView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="15dp"
         android:background="@drawable/boarder_bg"
         android:orientation="vertical">
         <RelativeLayout

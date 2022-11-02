@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="20dp"
     tools:context=".LoginActivity"
     android:orientation="vertical">
 
@@ -11,7 +12,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:paddingTop="20dp"
-        android:layout_height="150dp">
+        android:layout_height="100dp">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -78,7 +79,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:paddingTop="20dp"
-        android:gravity="end"
+        android:gravity="center"
         android:orientation="vertical"
         android:layout_height="wrap_content">
 

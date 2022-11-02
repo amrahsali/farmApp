@@ -91,6 +91,8 @@ public class LoginActivity extends AppCompatActivity implements BottomNavigation
     public void TosignUp(View view) {
         Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
         startActivity(intent);
+        finish();
+
     }
 
 

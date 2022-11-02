@@ -28,7 +28,6 @@
     <string name="withdraw">Withdraw</string>
     <string name="fund_wallet">fund wallet</string>
     <string name="potatoes">potatoes</string>
-    <string name="_53kg_of_sweet_patatoes_available_for_sale">53kg of sweet patatoes, available for sale</string>
     <string name="debit">Debit</string>
     <string name="product">product</string>
     <string name="wallet">Wallet</string>
@@ -49,4 +48,8 @@
     <string name="enter_otp">Enter OTP</string>
     <string name="create">create</string>
     <string name="log_in2">Log in</string>
+    <string name="farmer">Farmer</string>
+    <string name="user">User</string>
+    <string name="oranges">oranges</string>
+    <string name="_53kg_of_sweet_oranges_available_for_sale">_53kg_of_sweet_oranges_available_for_sale</string>
 </resources>

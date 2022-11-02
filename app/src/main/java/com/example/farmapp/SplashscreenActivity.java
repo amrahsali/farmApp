@@ -23,6 +23,7 @@ public class SplashscreenActivity extends AppCompatActivity {
             public void run() {
                 Intent intent = new Intent(SplashscreenActivity.this, LoginActivity.class);
                 startActivity(intent);
+                finish();
             }
         }, 2000);
 

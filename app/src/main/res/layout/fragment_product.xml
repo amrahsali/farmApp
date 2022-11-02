@@ -74,12 +74,13 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <TextView
+            <EditText
                 android:paddingStart="12dp"
                 android:drawableStart="@drawable/ic_round_search_24"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:gravity="center"
+                android:background="@null"
                 android:text="@string/search_here"
                 android:textAlignment="center" />
         </androidx.cardview.widget.CardView>
