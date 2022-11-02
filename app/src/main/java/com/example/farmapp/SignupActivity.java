@@ -21,7 +21,7 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        phoneNumber.findViewById(R.id.phone_number);
+       // phoneNumber.findViewById(R.id.phone_number);
     }
 
 
@@ -37,7 +37,7 @@ public class SignupActivity extends AppCompatActivity {
 
     public void Tosend(View view) {
 
-        phone = phoneNumber.getText().toString();
+       // phone = phoneNumber.getText().toString();
 
        // PhoneAuthOptions options =
             //    PhoneAuthOptions.newBuilder(mAuth)

@@ -2,6 +2,7 @@ package com.example.farmapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Context;
 import android.content.Intent;
@@ -86,6 +87,15 @@ public class LoginActivity extends AppCompatActivity implements BottomNavigation
 
         return false;
     }
+//    public void onBackPressed(){
+//        FragmentManager fm = getSupportFragmentManager();
+//        if (fm.getBackStackEntryCount() > 0) {
+//            fm.popBackStack();
+//        } else{
+//            super.onBackPressed();
+//        }
+//    }
+
 
 
     public void TosignUp(View view) {
