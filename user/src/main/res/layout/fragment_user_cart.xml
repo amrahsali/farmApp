@@ -3,10 +3,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20dp"
     tools:context=".User_cartFragment">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="cart"/>
+   <LinearLayout
+       android:orientation="horizontal"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="order"
+           android:textSize="20dp"/>
+
+       <TextView
+           android:gravity="end"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="edit cart"/>
+   </LinearLayout>
+
+
+
+
+
+
+
 
 </FrameLayout>

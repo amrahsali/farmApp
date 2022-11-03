@@ -44,13 +44,21 @@ public class LoginActivity extends AppCompatActivity implements BottomNavigation
                         @Override
                         public void onClick(View v) {
                             if (checkBox.isChecked()) {
-                                context = LocaleHelper.setLocale(context, "hausa");
+                                context = LocaleHelper.setLocale(LoginActivity.this, "ha");
                                 resources = context.getResources();
+                                Intent refresh = new Intent(context, LoginActivity.class);
+                                finish();
+                                startActivity(refresh);
+
                                 //Toast.makeText(this, "checkbox is checked", Toast.LENGTH_SHORT).show();
-                                Toast.makeText(context, "checkbox is checked", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "checkbox is checked", Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText( context, "checkbox is unchecked", Toast.LENGTH_SHORT).show();
-                                context = LocaleHelper.setLocale(context, "English");
+                                Toast.makeText( LoginActivity.this, "checkbox is unchecked", Toast.LENGTH_SHORT).show();
+                                context = LocaleHelper.setLocale(LoginActivity.this, "en");
+                                resources = context.getResources();
+                                Intent refresh = new Intent(context, LoginActivity.class);
+                                finish();
+                                startActivity(refresh);
 
                             }
                         }

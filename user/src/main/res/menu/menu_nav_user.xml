@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/user_product"
-        android:title="Product"
-        android:icon="@drawable/ic_round_local_florist_24"/>
 
-    <item
-        android:id="@+id/user_cart"
-        android:title="Cart"
-        android:icon="@drawable/ic_round_shopping_cart_24"/>
+
 
     <item
         android:id="@+id/user_profile"
         android:title="Profile"
         android:icon="@drawable/ic_round_person_outline_24"/>
+    <item
+        android:id="@+id/user_product"
+        android:title="Product"
+        android:icon="@drawable/ic_round_local_florist_24"/>
+    <item
+        android:id="@+id/user_cart"
+        android:title="Cart"
+        android:icon="@drawable/ic_round_shopping_cart_24"/>
+
 </menu>
