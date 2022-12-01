@@ -1,5 +1,6 @@
 package com.example.farmapp;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -16,7 +17,7 @@ import android.widget.Toast;
 public class WalletFragment extends Fragment {
     // Add RecyclerView member
     private RecyclerView recyclerView;
-    public Button fundWallet, withdraw;
+    public Button fundWallet, WButton;
 
     public WalletFragment() {
         // require a empty public constructor
@@ -32,13 +33,7 @@ public class WalletFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_wallet, container, false);
 
         fundWallet = view.findViewById(R.id.fund_wallet);
-        fundWallet.setOnClickListener( new View.OnClickListener()
-
-
-
-
-
-        {
+        fundWallet.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
@@ -51,8 +46,20 @@ public class WalletFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         recyclerView.setAdapter(new RandomNumListAdapter(1234));
 
-        return view;
 
+        button = view.findViewById(R.id.withdraw);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getActivity(), WithdrawActivity.class);
+                startActivity(intent);
+                // First go to container class-Activity
+            }
+        });
+
+        return view;
 
     }
 
@@ -60,5 +67,14 @@ public class WalletFragment extends Fragment {
         Toast.makeText(getActivity(), "pop up fund dialog", Toast.LENGTH_SHORT).show();
     }
 
+    private Dialog view;
 
-}
+
+
+
+
+
+
+
+
+    }
