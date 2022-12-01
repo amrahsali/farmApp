@@ -6,7 +6,7 @@
     <string name="sign_up">Sign Up</string>
     <string name="forgot_password">Forgot password?</string>
     <string name="log_in">Log in</string>
-    <string name="phone">phone</string>
+    <string name="phone">email</string>
     <string name="farmer_s_login">Farmer\'s login</string>
     <string name="are_you_a_farmer">Are you a farmer?</string>
     <string name="search_here">Search here</string>
@@ -44,8 +44,8 @@
     <string name="new_user">New user?</string>
     <string name="create_account">Create Account?</string>
     <string name="change_language">Change language</string>
-    <string name="phone2">phone</string>
-    <string name="enter_otp">Enter OTP</string>
+    <string name="phone2">email</string>
+    <string name="enter_otp">password</string>
     <string name="create">create</string>
     <string name="log_in2">Log in</string>
     <string name="farmer">Farmer</string>

@@ -8,127 +8,127 @@
     tools:context=".WalletFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:elevation="6dp"
-        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="150dp"
+            android:background="@color/green"
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:src="@drawable/ic_round_arrow_back_24"
-                        android:textSize="20dp" />
-
-                    <View
-                        android:layout_width="290dp"
-                        android:layout_height="match_parent" />
-
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="end"
-                        android:paddingTop="10dp"
-                        android:paddingEnd="10dp"
-                        android:src="@drawable/man" />
-
-                </LinearLayout>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="10dp"
-                    android:text="name"
-                    android:textSize="20dp" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingStart="10dp"
-                        android:text="musa kabir ishaq"
-                        android:textSize="13dp" />
-
-
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="10dp"
-                    android:text="@string/total_balance_id"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="10dp"
-                    android:text="N13000 "
-                    android:textSize="13dp" />
-
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="15dp" />
-
-            </LinearLayout>
-            <View
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"/>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/withdraw"
+                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/green"
-                    android:textSize="13sp"
-                    android:text="@string/withdraw"/>
+                    android:padding="10dp"
+                    android:src="@drawable/ic_round_arrow_back_24"
+                    android:textSize="20dp" />
+
                 <View
-                    android:layout_width="20dp"
-                    android:layout_height="match_parent"/>
-                <Button
-                    android:id="@+id/fund_wallet"
+                    android:layout_width="290dp"
+                    android:layout_height="match_parent" />
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="end"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="10dp"
+                    android:src="@drawable/man" />
+
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:text="name"
+                android:textSize="20dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="13sp"
-                    android:backgroundTint="@color/green"
-                    android:text="@string/fund_wallet"/>
+                    android:paddingStart="10dp"
+                    android:textColor="@color/white"
+                    android:text="musa kabir ishaq"
+                    android:textSize="13dp" />
+
 
             </LinearLayout>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:text="Total Balance ID"
+                android:textSize="20dp" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerview"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="visible" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:textColor="@color/white"
+                android:text="N13000 "
+                android:textSize="13dp" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="15dp" />
+
+        </LinearLayout>
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/withdraw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/green"
+                android:textSize="13sp"
+                android:text="Withdraw"/>
+            <View
+                android:layout_width="20dp"
+                android:layout_height="match_parent"/>
+            <Button
+                android:id="@+id/fund_wallet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:backgroundTint="@color/green"
+                android:text="fund wallet"/>
 
         </LinearLayout>
 
 
-    </androidx.cardview.widget.CardView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="409dp"
+            android:layout_height="460dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="1dp"
+            android:visibility="visible" />
+
+    </LinearLayout>
 
 
 </FrameLayout>

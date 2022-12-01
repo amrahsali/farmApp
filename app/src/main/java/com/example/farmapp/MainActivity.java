@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
@@ -45,8 +44,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             case R.id.profile:
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, profile).commit();
                 return true;
-
-
         }
 
         return false;

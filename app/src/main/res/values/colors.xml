@@ -10,5 +10,8 @@
     <color name="ash">#ECECEC</color>
     <color name="red">#CF2A2A</color>
 
+    <color name="purple_200">#296D98</color>
+    <color name="purple_500">#296D98</color>
+
 
 </resources>

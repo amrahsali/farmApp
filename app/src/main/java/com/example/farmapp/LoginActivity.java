@@ -29,16 +29,6 @@ public class LoginActivity extends AppCompatActivity implements BottomNavigation
 
 
             checkBox = findViewById(R.id.checkboxId);
-
-//            if (checkBox.isChecked()){
-//                context = LocaleHelper.setLocale(this, "hausa");
-//                resources = context.getResources();
-//                Toast.makeText(this, "checkbox is checked", Toast.LENGTH_SHORT).show();
-//            }else {
-//                Toast.makeText(this, "checkbox is unchecked", Toast.LENGTH_SHORT).show();
-//                context = LocaleHelper.setLocale(this, "English");
-//                resources = context.getResources();
-//            }
             checkBox.setOnClickListener(
                     new View.OnClickListener() {
                         @Override
