@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Objects;
 
@@ -89,5 +90,20 @@ public class FarmersLoginFragment extends Fragment {
         });
         return view;
 
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // in on start method checking if
+        // the user is already sign in.
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null) {
+            // if the user is not null then we are
+            // opening a main activity on below line.
+            Intent i = new Intent(getActivity(), MainActivity.class);
+            startActivity(i);
+            requireActivity().finish();
+        }
     }
 }
