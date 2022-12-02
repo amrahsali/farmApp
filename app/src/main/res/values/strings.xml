@@ -23,7 +23,7 @@
     <string name="home_address">Home address:</string>
     <string name="farm_address">Farm address:</string>
     <string name="farm_product">farm product:</string>
-    <string name="confirm">Confirm</string>
+    <string name="confirm">Log Out</string>
     <string name="total_balance_id">Total Balance ID</string>
     <string name="withdraw">Withdraw</string>
     <string name="fund_wallet">fund wallet</string>
