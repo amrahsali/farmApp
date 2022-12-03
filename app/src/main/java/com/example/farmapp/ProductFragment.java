@@ -79,8 +79,6 @@ public class ProductFragment extends Fragment {
 
 
         all_card.setOnClickListener( new View.OnClickListener()
-
-
         {
             @Override
             public void onClick(View v)
@@ -90,8 +88,6 @@ public class ProductFragment extends Fragment {
         });
 
         vegies.setOnClickListener( new View.OnClickListener()
-
-
         {
             @Override
             public void onClick(View v)

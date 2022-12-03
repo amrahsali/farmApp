@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:padding="10dp"
-    android:layout_height="wrap_content">
+    android:layout_height="130dp">
 
 
 <androidx.cardview.widget.CardView
@@ -21,7 +21,7 @@
            android:id="@+id/product_image"
            android:layout_width="0dp"
            android:layout_weight="1"
-           android:layout_height="wrap_content"
+           android:layout_height="match_parent"
            android:background="#9E9E9E"
            android:scaleType="centerCrop"
            android:src="@drawable/oranges"/>

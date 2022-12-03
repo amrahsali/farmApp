@@ -1,6 +1,7 @@
 package com.example.farmapp;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,15 +46,17 @@ public class  ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewH
         holder.product_name.setText(courseRVModal.getProductName());
         holder.Product_description.setText(courseRVModal.getProductDescription());
         holder.Product_price.setText("N. " + courseRVModal.getProductPrice());
-       // Picasso.get().load(courseRVModal.getProductImg()).into(holder.product_image);
+        Uri uri = Uri.parse(courseRVModal.getProductImg());
+        holder.product_image.setImageURI(uri);
+        //Picasso.get().load(courseRVModal.getProductImg()).into(holder.product_image);
         // adding animation to recycler view item on below line.
         setAnimation(holder.itemView, holder.getAdapterPosition());
-        holder.product_image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                courseClickInterface.onCourseClick(holder.getAdapterPosition());
-            }
-        });
+//        holder.product_image.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                courseClickInterface.onCourseClick(holder.getAdapterPosition());
+//            }
+//        });
     }
 
     private void setAnimation(View itemView, int position) {

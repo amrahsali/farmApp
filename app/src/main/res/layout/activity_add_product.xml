@@ -80,21 +80,28 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
-                android:hint="Enter Product Image Link"
+                android:hint="Select Image Link"
                 android:padding="5dp"
                 android:textColorHint="@color/black"
                 app:hintTextColor="@color/black">
 
-                <com.google.android.material.textfield.TextInputEditText
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/idEdtCourseImageLink"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:ems="10"-->
+<!--                    android:importantForAutofill="no"-->
+<!--                    android:inputType="textImeMultiLine|textMultiLine"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textColorHint="@color/black"-->
+<!--                    android:textSize="14sp" />-->
+
+                <Button
                     android:id="@+id/idEdtCourseImageLink"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:ems="10"
-                    android:importantForAutofill="no"
-                    android:inputType="textImeMultiLine|textMultiLine"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black"
-                    android:textSize="14sp" />
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Select Image"/>
             </com.google.android.material.textfield.TextInputLayout>
 
 
