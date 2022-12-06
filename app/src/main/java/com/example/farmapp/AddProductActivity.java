@@ -103,6 +103,7 @@ public class AddProductActivity extends AppCompatActivity {
                 String coursePrice = coursePriceEdt.getText().toString();
                 Uri productImage = imageuri;
                 String productUri = productImage.toString();
+                getContentResolver().takePersistableUriPermission(imageuri, (Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION));
                 //String courseImg = productImgBtn.getText().toString();
 
                 courseID = courseName;

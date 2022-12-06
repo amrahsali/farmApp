@@ -27,14 +27,26 @@
               android:layout_height="20dp"/>
 
 
-          <ImageView
-              android:src="@drawable/man"
-              android:background="@drawable/circle_bg"
+          <androidx.cardview.widget.CardView
               android:gravity="center"
+              android:layout_gravity="center"
+              android:id="@+id/cvStories"
               android:layout_width="100dp"
               android:layout_height="100dp"
-              android:layout_gravity="center"
-              android:scaleType="fitCenter"/>
+              app:cardCornerRadius="50dp"
+              >
+
+              <ImageView
+                  android:id="@+id/userprofile"
+                  android:background="@drawable/image"
+                  android:gravity="center"
+                  android:layout_width="100dp"
+                  android:layout_height="100dp"
+                  android:layout_gravity="center"
+                  android:scaleType="fitCenter"/>
+          </androidx.cardview.widget.CardView>
+
+
           <TextView
               android:paddingEnd="20dp"
               android:layout_width="match_parent"
@@ -72,6 +84,7 @@
                       android:layout_width="50dp"
                       android:layout_height="match_parent"/>
                   <EditText
+                      android:id="@+id/username"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:background="@null"
@@ -82,10 +95,52 @@
 
 
               </LinearLayout>
+
           </androidx.cardview.widget.CardView>
           <Space
               android:layout_width="wrap_content"
               android:layout_height="25dp"/>
+
+          <androidx.cardview.widget.CardView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:elevation="6dp"
+              android:layout_gravity="center"
+              android:layout_marginTop="8dp"
+              app:cardCornerRadius="10dp">
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+                  android:padding="10dp">
+
+
+                  <TextView
+                      android:layout_width="100dp"
+                      android:layout_height="wrap_content"
+                      android:text="Email"
+                      android:textSize="18dp"/>
+                  <Space
+                      android:layout_width="50dp"
+                      android:layout_height="match_parent"/>
+                  <EditText
+                      android:id="@+id/user_email"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:background="@null"
+                      android:inputType="textEmailAddress"
+                      android:hint=""
+                      android:textSize="15dp"/>
+
+
+
+              </LinearLayout>
+
+          </androidx.cardview.widget.CardView>
+          <Space
+              android:layout_width="wrap_content"
+              android:layout_height="25dp"/>
+
           <androidx.cardview.widget.CardView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
@@ -110,6 +165,7 @@
                       android:layout_height="match_parent"/>
 
                   <EditText
+                      android:id="@+id/userPhone"
                       android:inputType="phone"
                       android:background="@null"
                       android:layout_width="match_parent"
@@ -147,6 +203,7 @@
                       android:layout_height="match_parent"/>
 
                   <EditText
+                      android:id="@+id/userHomeAddress"
                       android:inputType="text"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
@@ -185,6 +242,7 @@
                       android:layout_height="match_parent"/>
 
                   <EditText
+                      android:id="@+id/userFarmAddress"
                       android:inputType="text"
                       android:layout_width="match_parent"
                       android:background="@null"
@@ -249,6 +307,14 @@
               android:orientation="horizontal"
               android:gravity="center">
 
+
+              <Button
+                  android:id="@+id/updatebutn"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_margin="8dp"
+                  android:text="Update"
+                  android:layout_gravity="center"/>
 
               <Button
                   android:id="@+id/logoutbutn"

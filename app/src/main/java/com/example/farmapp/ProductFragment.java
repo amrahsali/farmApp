@@ -2,6 +2,7 @@ package com.example.farmapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,11 +14,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserInfo;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,7 +33,8 @@ import java.util.Objects;
 
 
 public class ProductFragment extends Fragment {
-    TextView all_card, vegies,fruit, grain, tuber;
+    TextView all_card, vegies,fruit, grain, tuber, product_profile_name;
+    ImageView product_profile_img;
     Context context;
     private RecyclerView recyclerView;
     private FloatingActionButton addCourseFAB;
@@ -57,6 +62,8 @@ public class ProductFragment extends Fragment {
         fruit  = view.findViewById(R.id.fruit);
         grain  = view.findViewById(R.id.grain);
         tuber  = view.findViewById(R.id.tuber);
+        product_profile_img = view.findViewById(R.id.product_profile_img);
+        product_profile_name = view.findViewById(R.id.product_profile_name);
 
         recyclerView = view.findViewById(R.id.rvNumbers);
         courseRVModalArrayList = new ArrayList<>();
@@ -65,6 +72,33 @@ public class ProductFragment extends Fragment {
         //on below line we are getting database reference.
         databaseReference = firebaseDatabase.getReference(Objects.requireNonNull(mAuth.getCurrentUser()).getUid() +"Products");
         addCourseFAB = view.findViewById(R.id.idFABAddCourse);
+
+        //get user profile
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null) {
+            for (UserInfo profile : user.getProviderData()) {
+                // Id of the provider (ex: google.com)
+                String providerId = profile.getProviderId();
+
+                // UID specific to the provider
+                String uid = profile.getUid();
+
+                // Name, email address, and profile photo Url
+                String name = profile.getDisplayName();
+                String email = profile.getEmail();
+                Uri photoUrl = profile.getPhotoUrl();
+
+
+                if (!name.isEmpty()){
+                    product_profile_name.setText(name);
+                    product_profile_img.setImageURI(photoUrl);;
+                }
+
+
+            }
+        }
+
+
 
         addCourseFAB.setOnClickListener(new View.OnClickListener() {
             @Override
