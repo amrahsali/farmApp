@@ -84,6 +84,7 @@ public class AddProductActivity extends AppCompatActivity {
                     Intent i = new Intent(Intent.ACTION_OPEN_DOCUMENT);
                     i.addCategory(Intent.CATEGORY_OPENABLE);
                     i.setType("image/*");
+
                     // pass the constant to compare it
                     // with the returned requestCode
                     startActivityForResult(Intent.createChooser(i, "Select Picture"), SELECT_PICTURE);
