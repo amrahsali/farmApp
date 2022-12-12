@@ -25,7 +25,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
-                android:hint="Enter Product Name"
+                android:hint="@string/enter_product_name"
                 android:padding="5dp"
                 android:textColorHint="@color/black"
                 app:hintTextColor="@color/black">
@@ -51,7 +51,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
-                android:hint="Enter Product Price"
+                android:hint="@string/enter_product_price"
                 android:padding="5dp"
                 android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/purple_200"
@@ -101,7 +101,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Select Image"/>
+                    android:text="@string/select_image"/>
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -114,7 +114,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
-                android:hint="Enter Course Description"
+                android:hint="@string/enter_course_description"
                 android:padding="5dp"
                 android:textColorHint="@color/black"
                 app:hintTextColor="@color/black">
@@ -141,7 +141,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/button_back"
-                android:text="Add Your Product"
+                android:text="@string/add_your_product"
                 android:textAllCaps="false" />
 
 

@@ -54,4 +54,9 @@
     <string name="_53kg_of_sweet_oranges_available_for_sale">_53kg_of_sweet_oranges_available_for_sale</string>
     <string name="name2">name</string>
     <string name="adapteroranges" translatable="false">oranges</string>
+    <string name="enter_product_name">Enter Product Name</string>
+    <string name="enter_product_price">Enter Product Price</string>
+    <string name="enter_course_description">Enter Course Description</string>
+    <string name="select_image">Select Image</string>
+    <string name="add_your_product">Add Your Product</string>
 </resources>
