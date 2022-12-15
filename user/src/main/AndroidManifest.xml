@@ -9,6 +9,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FarmApp">
         <activity
+            android:name=".SplashScreenActivity"
+            android:theme="@style/Theme.Design.NoActionBar"
+        android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".User_regActivity"
             android:exported="false">
             <meta-data

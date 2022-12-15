@@ -8,7 +8,7 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class User_regActivity extends AppCompatActivity  implements BottomNavigationView.OnNavigationItemReselectedListener {
+public class User_regActivity extends AppCompatActivity  implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     BottomNavigationView regNavigationView;
     @Override
@@ -23,10 +23,12 @@ public class User_regActivity extends AppCompatActivity  implements BottomNaviga
 
     }
 
-    userLoginFragment userlogin = new userLoginFragment();
+     userLoginFragment userlogin = new userLoginFragment();
      UserSignupFragment usersignup  = new UserSignupFragment();
+
+
     @Override
-    public void onNavigationItemReselected(@NonNull MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()) {
             case R.id.user_loginMenu:
@@ -36,13 +38,8 @@ public class User_regActivity extends AppCompatActivity  implements BottomNaviga
             case R.id.user_signupMenu:
                 getSupportFragmentManager().beginTransaction().replace(R.id.userContainer, usersignup).commit();
                 return true;
-
-
         }
 
         return false;
-
-
     }
-
 }

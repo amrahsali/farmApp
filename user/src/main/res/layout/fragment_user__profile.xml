@@ -10,258 +10,319 @@
 
 
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:paddingEnd="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:text="my_profile"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:gravity="center"/>
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"/>
 
-            <TextView
-                android:paddingEnd="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="My Profile"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:gravity="center"/>
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"/>
 
+        <androidx.cardview.widget.CardView
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:id="@+id/cvStories"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:cardCornerRadius="50dp"
+            >
 
             <ImageView
-                android:src="@drawable/man"
-                android:background="@drawable/circle_bg"
+                android:background="@drawable/image"
                 android:gravity="center"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:scaleType="fitCenter"/>
-            <TextView
-                android:paddingEnd="20dp"
+        </androidx.cardview.widget.CardView>
+
+
+        <TextView
+            android:paddingEnd="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="edit"
+            android:gravity="end"/>
+        <LinearLayout
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:text="edit"
-                android:gravity="end"/>
-            <LinearLayout
-                android:padding="10dp"
+                android:elevation="6dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                app:cardCornerRadius="10dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="name"
+                        android:textSize="18dp"/>
+                    <Space
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"/>
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:inputType="text"
+                        android:hint=""
+                        android:textSize="15dp"/>
+
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"/>
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-
-                <androidx.cardview.widget.CardView
+                android:elevation="6dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                app:cardCornerRadius="10dp">
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:elevation="6dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="8dp"
-                    app:cardCornerRadius="10dp">
-                    <LinearLayout
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Email"
+                        android:textSize="18dp"/>
+                    <Space
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"/>
+                    <EditText
+                        android:id="@+id/user_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="10dp">
-
-
-                        <TextView
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:text="name"
-                            android:textSize="18dp"/>
-                        <Space
-                            android:layout_width="50dp"
-                            android:layout_height="match_parent"/>
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@null"
-                            android:inputType="text"
-                            android:hint=""
-                            android:textSize="15dp"/>
+                        android:background="@null"
+                        android:inputType="textEmailAddress"
+                        android:hint=""
+                        android:textSize="15dp"/>
 
 
 
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"/>
-                <androidx.cardview.widget.CardView
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="6dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                app:cardCornerRadius="10dp">
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:elevation="6dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="8dp"
-                    app:cardCornerRadius="10dp">
-                    <LinearLayout
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="phone_number"
+                        android:textSize="18dp"/>
+                    <Space
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"/>
+
+                    <EditText
+                        android:inputType="phone"
+                        android:background="@null"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="10dp">
+                        android:hint=""
+                        android:textSize="15dp"/>
 
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Phone Number"
-                            android:textSize="18dp"/>
-                        <Space
-                            android:layout_width="50dp"
-                            android:layout_height="match_parent"/>
-
-                        <EditText
-                            android:inputType="phone"
-                            android:background="@null"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint=""
-                            android:textSize="15dp"/>
-
-
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"/>
-                <androidx.cardview.widget.CardView
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"/>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="6dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                app:cardCornerRadius="10dp">
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:elevation="6dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="8dp"
-                    app:cardCornerRadius="10dp">
-                    <LinearLayout
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="home_address"
+                        android:textSize="18dp"/>
+                    <View
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"/>
+
+                    <EditText
+                        android:inputType="text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="10dp">
+                        android:background="@null"
+                        android:hint=""
+                        android:textSize="15dp"/>
 
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Payment"
-                            android:textSize="18dp"/>
-                        <View
-                            android:layout_width="50dp"
-                            android:layout_height="match_parent"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"/>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="6dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                app:cardCornerRadius="10dp">
 
-                        <EditText
-                            android:inputType="text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@null"
-                            android:hint=""
-                            android:textSize="15dp"/>
-
-
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"/>
-                <androidx.cardview.widget.CardView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:elevation="6dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="8dp"
-                    app:cardCornerRadius="10dp">
+                    android:orientation="horizontal"
+                    android:padding="10dp">
 
-                    <LinearLayout
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="farm_address"
+                        android:textSize="18dp"/>
+                    <View
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"/>
+
+                    <EditText
+                        android:inputType="text"
+                        android:layout_width="match_parent"
+                        android:background="@null"
+                        android:layout_height="wrap_content"
+                        android:hint=""
+                        android:textSize="15dp"/>
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="6dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                app:cardCornerRadius="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="farm_product"
+                        android:textSize="18dp"/>
+                    <View
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"/>
+
+                    <EditText
+                        android:inputType="text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="10dp">
+                        android:background="@null"
+                        android:hint=""
+                        android:textSize="15dp"/>
 
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Notification"
-                            android:textSize="18dp"/>
-                        <View
-                            android:layout_width="50dp"
-                            android:layout_height="match_parent"/>
+                </LinearLayout>
 
-                        <EditText
-                            android:inputType="text"
-                            android:layout_width="match_parent"
-                            android:background="@null"
-                            android:layout_height="wrap_content"
-                            android:hint=""
-                            android:textSize="15dp"/>
-
-
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"/>
-
-                <androidx.cardview.widget.CardView
+            </androidx.cardview.widget.CardView>
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"/>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="6dp">
+                <LinearLayout
+                    app:cardCornerRadius="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:elevation="6dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="8dp"
-                    app:cardCornerRadius="10dp">
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
+
+                    <Button
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="10dp">
+                        android:layout_margin="8dp"
+                        android:text="Update"
+                        android:layout_gravity="center"/>
 
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Support"
-                            android:textSize="18dp"/>
-                        <View
-                            android:layout_width="50dp"
-                            android:layout_height="match_parent"/>
-
-                        <EditText
-                            android:inputType="text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@null"
-                            android:hint=""
-                            android:textSize="15dp"/>
-
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="70dp"/>
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:elevation="6dp">
-                    <LinearLayout
-                        app:cardCornerRadius="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:gravity="center">
-
-
-                        <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="confirm"
-                            android:layout_gravity="center"/>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
-
-
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="confirm"
+                        android:onClick="logOut"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
+
+
+    </LinearLayout>
 
 
 
