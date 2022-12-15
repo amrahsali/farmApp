@@ -36,7 +36,7 @@
             app:menu="@menu/user_reg" />
 
         <FrameLayout
-            android:id="@+id/usercontainer"
+            android:id="@+id/usercontainer1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="1dp"

@@ -32,11 +32,11 @@ public class User_regActivity extends AppCompatActivity  implements BottomNaviga
 
         switch (item.getItemId()) {
             case R.id.user_loginMenu:
-                getSupportFragmentManager().beginTransaction().replace(R.id.userContainer , userlogin).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.usercontainer1 , userlogin).commit();
                 return true;
 
             case R.id.user_signupMenu:
-                getSupportFragmentManager().beginTransaction().replace(R.id.userContainer, usersignup).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.usercontainer1, usersignup).commit();
                 return true;
         }
 
