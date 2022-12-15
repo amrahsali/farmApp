@@ -10,13 +10,19 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class LoginActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
+public class LoginActivity extends AppCompatActivity
+        implements BottomNavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemSelectedListener{
+
+    String[] languages = { "select language", "english", "hausa" };
 
     CheckBox checkBox;
     Context context;
@@ -27,33 +33,41 @@ public class LoginActivity extends AppCompatActivity implements BottomNavigation
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        Spinner spin = findViewById(R.id.lang_spinner);
+        spin.setOnItemSelectedListener(this);
 
-            checkBox = findViewById(R.id.checkboxId);
-            checkBox.setOnClickListener(
-                    new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            if (checkBox.isChecked()) {
-                                context = LocaleHelper.setLocale(LoginActivity.this, "ha");
-                                resources = context.getResources();
-                                Intent refresh = new Intent(context, LoginActivity.class);
-                                finish();
-                                startActivity(refresh);
+        //Creating the ArrayAdapter instance having the country list
+        ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item, languages);
+        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //Setting the ArrayAdapter data on the Spinner
+        spin.setAdapter(aa);
 
-                                //Toast.makeText(this, "checkbox is checked", Toast.LENGTH_SHORT).show();
-                                Toast.makeText(LoginActivity.this, "checkbox is checked", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText( LoginActivity.this, "checkbox is unchecked", Toast.LENGTH_SHORT).show();
-                                context = LocaleHelper.setLocale(LoginActivity.this, "en");
-                                resources = context.getResources();
-                                Intent refresh = new Intent(context, LoginActivity.class);
-                                finish();
-                                startActivity(refresh);
-
-                            }
-                        }
-                    }
-            );
+       // checkBox = findViewById(R.id.checkboxId);
+//            checkBox.setOnClickListener(
+//                    new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//                            if (checkBox.isChecked()) {
+//                                context = LocaleHelper.setLocale(LoginActivity.this, "ha");
+//                                resources = context.getResources();
+//                                Intent refresh = new Intent(context, LoginActivity.class);
+//                                finish();
+//                                startActivity(refresh);
+//
+//                                //Toast.makeText(this, "checkbox is checked", Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(LoginActivity.this, "checkbox is checked", Toast.LENGTH_SHORT).show();
+//                            } else {
+//                                Toast.makeText( LoginActivity.this, "checkbox is unchecked", Toast.LENGTH_SHORT).show();
+//                                context = LocaleHelper.setLocale(LoginActivity.this, "en");
+//                                resources = context.getResources();
+//                                Intent refresh = new Intent(context, LoginActivity.class);
+//                                finish();
+//                                startActivity(refresh);
+//
+//                            }
+//                        }
+//                    }
+//            );
 
 
         loginNavigationView = findViewById(R.id.loginNavigationView);
@@ -104,9 +118,34 @@ public class LoginActivity extends AppCompatActivity implements BottomNavigation
     }
 
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+        if (languages[position].equals("hausa")){
+            context = LocaleHelper.setLocale(LoginActivity.this, "ha");
+            resources = context.getResources();
+            Intent refresh = new Intent(context, LoginActivity.class);
+            Toast.makeText(getApplicationContext(),languages[position] , Toast.LENGTH_SHORT).show();
+            finish();
+            startActivity(refresh);
+        }else if(languages[position].equals("english")){
+            //Toast.makeText( LoginActivity.this, "checkbox is unchecked", Toast.LENGTH_SHORT).show();
+            context = LocaleHelper.setLocale(LoginActivity.this, "en");
+            resources = context.getResources();
+            Intent refresh = new Intent(context, LoginActivity.class);
+            Toast.makeText(getApplicationContext(),languages[position] , Toast.LENGTH_SHORT).show();
+            finish();
+            startActivity(refresh);
+        }else {
+            Toast.makeText(getApplicationContext(),"languages" , Toast.LENGTH_SHORT).show();
+        }
 
 
+    }
 
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+        Toast.makeText(getApplicationContext(),"languages" , Toast.LENGTH_SHORT).show();
 
-
+    }
 }
