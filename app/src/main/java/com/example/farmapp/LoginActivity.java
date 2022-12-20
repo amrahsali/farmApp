@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity
         //Setting the ArrayAdapter data on the Spinner
         spin.setAdapter(aa);
 
-       // checkBox = findViewById(R.id.checkboxId);
+        // checkBox = findViewById(R.id.checkboxId);
 //            checkBox.setOnClickListener(
 //                    new View.OnClickListener() {
 //                        @Override
@@ -82,6 +82,8 @@ public class LoginActivity extends AppCompatActivity
 
 
 
+
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -94,7 +96,6 @@ public class LoginActivity extends AppCompatActivity
             case R.id.users:
                 getSupportFragmentManager().beginTransaction().replace(R.id.container2, users).commit();
                 return true;
-
 
         }
 

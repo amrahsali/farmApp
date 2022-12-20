@@ -91,7 +91,7 @@ public class ProductFragment extends Fragment {
 
                 if (!name.isEmpty()){
                     product_profile_name.setText(name);
-                    product_profile_img.setImageURI(photoUrl);;
+                    //product_profile_img.setImageURI(photoUrl);;
                 }
 
 

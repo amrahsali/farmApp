@@ -32,8 +32,8 @@
     <string name="product">product</string>
     <string name="wallet">Wallet</string>
     <string name="profile">profile</string>
-    <string name="farmers">farmers</string>
-    <string name="users">users</string>
+    <string name="farmers">Login</string>
+    <string name="users">Sign Up</string>
     <string name="withdrawal">Withdrawal</string>
     <string name="balance">Balance:</string>
     <string name="amount">Amount</string>

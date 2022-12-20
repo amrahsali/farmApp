@@ -89,4 +89,7 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void Tosend(View view) {
+    }
 }
