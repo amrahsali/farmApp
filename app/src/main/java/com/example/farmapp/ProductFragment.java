@@ -89,6 +89,7 @@ public class ProductFragment extends Fragment {
                 Uri photoUrl = profile.getPhotoUrl();
 
 
+                assert name != null;
                 if (!name.isEmpty()){
                     product_profile_name.setText(name);
                     //product_profile_img.setImageURI(photoUrl);;
