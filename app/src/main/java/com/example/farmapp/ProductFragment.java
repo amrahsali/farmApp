@@ -89,16 +89,17 @@ public class ProductFragment extends Fragment {
                 Uri photoUrl = profile.getPhotoUrl();
 
 
-                assert name != null;
-                if (!name.isEmpty()){
-                    product_profile_name.setText(name);
+
+                if (profile.getDisplayName() == null){
+
                     //product_profile_img.setImageURI(photoUrl);;
+                }else {
+                    product_profile_name.setText(name);
                 }
 
 
             }
         }
-
 
 
         addCourseFAB.setOnClickListener(new View.OnClickListener() {
