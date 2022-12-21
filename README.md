@@ -13,3 +13,11 @@ SplashScreen
 ![image](https://user-images.githubusercontent.com/38568532/208859095-5811a304-ab07-4da7-8beb-e1c8c4732385.png)
 Signup/Login screen
 
+![image](https://user-images.githubusercontent.com/38568532/208860277-43486b36-0ffd-4590-8785-f3da1d48adfd.png)
+Dashboard
+
+![image](https://user-images.githubusercontent.com/38568532/208860458-49f632ed-768e-46a4-b6f4-8985cb96b1b1.png)
+Profile
+
+Find and download APK in the root folder of the repo
+
