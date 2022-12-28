@@ -57,14 +57,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="new_user"
+            android:text="@string/new_user"
             android:textSize="15sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/green"
-            android:text="create_account"
+            android:text="@string/create_account"
             android:textSize="15sp" />
     </LinearLayout>
 
@@ -79,13 +79,23 @@
             android:paddingEnd="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="change_language"
+            android:text="@string/change_language"
             android:textSize="15sp" />
-        <CheckBox
-            android:id="@+id/checkboxId"
-            android:gravity="center"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"/>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <!--Spinner widget-->
+            <Spinner
+                android:layout_height="50dp"
+                android:layout_width="160dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
 
 

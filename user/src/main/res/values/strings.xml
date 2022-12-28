@@ -2,4 +2,31 @@
     <string name="app_name">user</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="new_user">new_user</string>
+    <string name="create_account">create_account</string>
+    <string name="change_language">change_language</string>
+    <string name="name">name</string>
+    <string name="email">Email</string>
+    <string name="phone_number">phone_number</string>
+    <string name="home_address">home_address</string>
+    <string name="farm_address">farm_address</string>
+    <string name="farm_product">farm_product</string>
+    <string name="update">Update</string>
+    <string name="confirm">confirm</string>
+    <string name="shopping_cart">Shopping Cart</string>
+    <string name="order">order</string>
+    <string name="edit_cart">edit cart</string>
+    <string name="remove_all">Remove all</string>
+    <string name="total">Total:</string>
+    <string name="check_out">Check out</string>
+    <string name="login">Login</string>
+    <string name="phone">phone</string>
+    <string name="log_in">log_in</string>
+    <string name="forgot_password">forgot_password</string>
+    <string name="are_you_a_user">Are you a user?</string>
+    <string name="search_here">search here</string>
+    <string name="categories">categories</string>
+    <string name="sign_up">sign_up</string>
+    <string name="create">create</string>
+    <string name="log_in2">log_in</string>
 </resources>

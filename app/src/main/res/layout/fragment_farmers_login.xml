@@ -125,9 +125,6 @@
 
     </androidx.cardview.widget.CardView>
 
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"/>
 
     <!--progress-bar for loading indicator-->
     <ProgressBar

@@ -106,4 +106,5 @@ public class FarmersLoginFragment extends Fragment {
             requireActivity().finish();
         }
     }
+
 }

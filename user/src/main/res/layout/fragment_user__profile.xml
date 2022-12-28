@@ -78,7 +78,7 @@
                     <TextView
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="name"
+                        android:text="@string/name"
                         android:textSize="18dp"/>
                     <Space
                         android:layout_width="50dp"
@@ -117,7 +117,7 @@
                     <TextView
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="Email"
+                        android:text="@string/email"
                         android:textSize="18dp"/>
                     <Space
                         android:layout_width="50dp"
@@ -157,7 +157,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="phone_number"
+                        android:text="@string/phone_number"
                         android:textSize="18dp"/>
                     <Space
                         android:layout_width="50dp"
@@ -194,7 +194,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="home_address"
+                        android:text="@string/home_address"
                         android:textSize="18dp"/>
                     <View
                         android:layout_width="50dp"
@@ -232,7 +232,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="farm_address"
+                        android:text="@string/farm_address"
                         android:textSize="18dp"/>
                     <View
                         android:layout_width="50dp"
@@ -271,7 +271,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="farm_product"
+                        android:text="@string/farm_product"
                         android:textSize="18dp"/>
                     <View
                         android:layout_width="50dp"
@@ -308,13 +308,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
-                        android:text="Update"
+                        android:text="@string/update"
                         android:layout_gravity="center"/>
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="confirm"
+                        android:text="@string/confirm"
                         android:onClick="logOut"
                         android:layout_gravity="center"/>
                 </LinearLayout>

@@ -24,6 +24,7 @@ public class LoginActivity extends AppCompatActivity
 
     String[] languages = { "select language", "english", "hausa" };
 
+
     CheckBox checkBox;
     Context context;
     Resources resources;
@@ -101,6 +102,10 @@ public class LoginActivity extends AppCompatActivity
 
         return false;
     }
+
+
+
+
 //    public void onBackPressed(){
 //        FragmentManager fm = getSupportFragmentManager();
 //        if (fm.getBackStackEntryCount() > 0) {
@@ -150,4 +155,6 @@ public class LoginActivity extends AppCompatActivity
         Toast.makeText(getApplicationContext(),"languages" , Toast.LENGTH_SHORT).show();
 
     }
+
+
 }

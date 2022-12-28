@@ -3,12 +3,140 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".UserSignupFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:paddingTop="20dp"
+        android:layout_height="150dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:src="@drawable/egoonalogo"/>
+
+
+    </LinearLayout>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="400dp"
+        android:elevation="6dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        app:cardCornerRadius="10dp">
+
+
+        <TextView
+            android:paddingTop="10dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:text="@string/sign_up"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/boarder_bg">
+
+                <EditText
+                    android:id="@+id/phone_number"
+                    android:padding="10dp"
+                    android:layout_width="0dp"
+                    android:maxLines="1"
+                    android:inputType="text"
+                    android:scrollHorizontally="true"
+                    android:ellipsize="end"
+                    android:layout_weight="5"
+                    android:layout_height="50dp"
+                    android:drawableTint="@color/green"
+                    android:background="@null"
+                    android:drawableStart="@drawable/ic_round_local_phone_24"
+                    android:drawablePadding="10dp"
+                    android:hint="phone"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:minHeight="48dp"
+                    android:contentDescription="image"
+                    android:src="@drawable/ic_round_send_24"
+                    app:tint="@color/green" />
+
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/boarder_bg">
+                <EditText
+                    android:padding="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:drawableTint="@color/green"
+                    android:background="@null"
+                    android:drawableStart="@drawable/ic_round_security_24"
+                    android:drawablePadding="10dp"
+                    android:hint="enter_otp"/>
+
+            </LinearLayout>
+
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"/>
+
+            <Button
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="@string/create"/>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="signup" />
+        android:layout_height="160dp"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnMain"
+            android:layout_width="100dp"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/ash"
+            android:layout_height="50dp"
+            android:text="@string/log_in2"/>
+
+    </LinearLayout>
+
 
 </FrameLayout>
