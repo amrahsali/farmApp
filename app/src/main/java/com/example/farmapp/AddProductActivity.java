@@ -187,7 +187,7 @@ public class AddProductActivity extends AppCompatActivity {
 
 
 
-                            String  uploadId = databaseReference.push().getKey();
+                            String   uploadId = databaseReference.push().getKey();
                             databaseReference.child(uploadId).setValue(upload);
                             progressDialog.setCanceledOnTouchOutside(false);
                             progressDialog.dismiss();
