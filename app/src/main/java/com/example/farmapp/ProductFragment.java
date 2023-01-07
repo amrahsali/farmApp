@@ -164,6 +164,9 @@ public class ProductFragment extends Fragment {
         recyclerView.setAdapter(courseRVAdapter);
         getProducts();
 
+
+
+
         return view;
     }
 
