@@ -60,5 +60,14 @@
     <string name="select_image"> zabi hotot</string>
     <string name="add_your_product"> kara anfanin gona</string>
 
+    <string name="farmersp">Manomi</string>
+    <string name="select_image_link">Zaɓi hanyar haɗi</string>
+    <string name="phonelg">waya</string>
+    <string name="forgot_passwordlg">Manta kalmar sirri?</string>
+    <string name="log_inlg">Shiga</string>
+
+
+
+
 
 </resources>

@@ -62,9 +62,9 @@
                     android:drawableTint="@color/green"
                     android:background="@null"
                     android:phoneNumber="true"
-                    android:drawableStart="@drawable/ic_round_local_phone_24"
+                    android:drawableStart="@drawable/ic_sharp_email_24"
                     android:drawablePadding="10dp"
-                    android:hint="phone"/>
+                    android:hint="@string/phonelg"/>
             </LinearLayout>
 
             <Space
@@ -105,7 +105,7 @@
                     android:layout_width="match_parent"
                     android:backgroundTint="@color/green"
                     android:layout_height="50dp"
-                    android:text="Log in"/>
+                    android:text="@string/log_inlg"/>
 
                 <View
                     android:layout_width="wrap_content"
@@ -114,7 +114,7 @@
                     android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Forgot password?"
+                    android:text="@string/forgot_passwordlg"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 

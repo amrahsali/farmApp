@@ -7,19 +7,6 @@
     tools:context=".SignupActivity"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:paddingTop="20dp"
-        android:layout_height="150dp">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:src="@drawable/egoonalogo"/>
-
-
-    </LinearLayout>
-
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
@@ -69,7 +56,7 @@
             android:layout_height="50dp"
             android:drawableTint="@color/green"
             android:background="@null"
-            android:drawableStart="@drawable/ic_round_local_phone_24"
+            android:drawableStart="@drawable/ic_sharp_email_24"
             android:drawablePadding="10dp"
             android:hint="@string/phone2"/>
 

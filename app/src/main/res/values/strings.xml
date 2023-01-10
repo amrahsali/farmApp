@@ -59,4 +59,9 @@
     <string name="enter_course_description">Enter Course Description</string>
     <string name="select_image">Select Image</string>
     <string name="add_your_product">Add Your Product</string>
+    <string name="farmersp">Farmer</string>
+    <string name="select_image_link">Select Image Link</string>
+    <string name="phonelg">phone</string>
+    <string name="forgot_passwordlg">Forgot password?</string>
+    <string name="log_inlg">Log in</string>
 </resources>

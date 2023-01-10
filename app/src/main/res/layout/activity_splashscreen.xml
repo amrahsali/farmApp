@@ -8,11 +8,31 @@
     android:background="@color/white"
     tools:context=".SplashscreenActivity">
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="620dp">
+
+
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:src="@drawable/egoonalogo"/>
+
+    </LinearLayout>
+
+
+    <TextView
+            android:paddingTop="10dp"
+            android:gravity="center"
+        android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/green_200"
+            android:textSize="20dp"
+            android:text="@string/farmersp"/>
 
 
 
