@@ -86,6 +86,7 @@
             android:layout_height="match_parent">
             <!--Spinner widget-->
             <Spinner
+                android:id="@+id/spinnerLang"
                 android:layout_height="50dp"
                 android:layout_width="160dp"
                 android:layout_marginEnd="10dp"

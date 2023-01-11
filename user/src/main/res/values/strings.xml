@@ -29,4 +29,14 @@
     <string name="sign_up">sign_up</string>
     <string name="create">create</string>
     <string name="log_in2">log_in</string>
+    <string name="user">User</string>
+    <string name="my_profile">my profile</string>
+    <string name="edit">edit</string>
+    <string name="phone2">phone</string>
+    <string name="sign_up2">sign up</string>
+    <string name="phone3">phone</string>
+    <string name="enter_password">enter password</string>
+    <string name="log_in3">log in</string>
+    <string name="mangoes">Mangoes</string>
+    <string name="_33kg_of_sweet_mango_available_for_sale">33kg of sweet mango available for sale</string>
 </resources>

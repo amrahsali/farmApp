@@ -31,7 +31,7 @@
         android:textStyle="bold"
         android:textColor="@color/black"
         android:textSize="20dp"
-        android:text="User"/>
+        android:text="@string/user"/>
 
 
 

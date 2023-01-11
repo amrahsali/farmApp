@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="new_user">sabon mai anfani</string>
+    <string name="create_account">kirkirar account</string>
+    <string name="change_language">cenza harshe</string>
+    <string name="name">suna</string>
+    <string name="email">imel</string>
+    <string name="phone_number">numbar waya</string>
+    <string name="home_address">adareshin gida </string>
+    <string name="farm_address">adareshin gona</string>
+    <string name="farm_product">anfanin gona</string>
+    <string name="update">Sabuntawa</string>
+    <string name="confirm">tabbatar</string>
+    <string name="shopping_cart">Siyayya</string>
+    <string name="order">oda</string>
+    <string name="edit_cart">shirya cart</string>
+    <string name="remove_all">cire duka</string>
+    <string name="total">gabadaya:</string>
+    <string name="check_out">Duba</string>
+    <string name="login">Shiga</string>
+    <string name="phone">waya</string>
+    <string name="log_in">Shiga</string>
+    <string name="forgot_password">manta kalman sirri</string>
+    <string name="are_you_a_user">kai/ke mai anfani ne?</string>
+    <string name="search_here">bincika anan</string>
+    <string name="categories">rukuni</string>
+    <string name="sign_up">sa hannu</string>
+    <string name="create">ƙirƙira</string>
+    <string name="log_in2">Shiga</string>
+    <string name="user">mai anfani</string>
+    <string name="my_profile">bayanin martaba na</string>
+    <string name="edit">shirya</string>
+    <string name="phone2">waya</string>
+    <string name="sign_up2">sa hannu</string>
+    <string name="phone3">waya</string>
+    <string name="enter_password">shigar da kalman sirri</string>
+    <string name="log_in3">log in</string>
+    <string name="mangoes">Mangoes</string>
+    <string name="_33kg_of_sweet_mango_available_for_sale">33kg of sweet mango available for sale</string>
+</resources>

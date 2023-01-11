@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:textSize="20dp"
-            android:text="@string/sign_up"/>
+            android:text="@string/sign_up2"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -73,7 +73,7 @@
                     android:background="@null"
                     android:drawableStart="@drawable/ic_round_local_phone_24"
                     android:drawablePadding="10dp"
-                    android:hint="phone"/>
+                    android:hint="@string/phone3"/>
 
                 <ImageView
                     android:layout_width="0dp"
@@ -104,7 +104,7 @@
                     android:background="@null"
                     android:drawableStart="@drawable/ic_round_security_24"
                     android:drawablePadding="10dp"
-                    android:hint="enter_otp"/>
+                    android:hint="@string/enter_password"/>
 
             </LinearLayout>
 
@@ -134,7 +134,7 @@
             android:textColor="@color/black"
             android:backgroundTint="@color/ash"
             android:layout_height="50dp"
-            android:text="@string/log_in2"/>
+            android:text="@string/log_in3"/>
 
     </LinearLayout>
 

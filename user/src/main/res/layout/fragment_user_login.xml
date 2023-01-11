@@ -58,7 +58,7 @@
                     android:background="@null"
                     android:drawableStart="@drawable/ic_round_local_phone_24"
                     android:drawablePadding="10dp"
-                    android:hint="phone"/>
+                    android:hint="@string/phone2"/>
             </LinearLayout>
 
             <Space
