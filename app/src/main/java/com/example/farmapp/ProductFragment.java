@@ -2,6 +2,7 @@ package com.example.farmapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -44,6 +45,7 @@ public class ProductFragment extends Fragment {
     private ArrayList<ProductRVModal> courseRVModalArrayList;
     //private GridRecyclerViewHolder courseRVAdapter;
     private ProductsAdapter courseRVAdapter;
+    ImageView to_notification;
 
 
 
@@ -53,6 +55,8 @@ public class ProductFragment extends Fragment {
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+
 
         // Inflate the layout for this fragment
          View view = inflater.inflate(R.layout.fragment_product, container, false);
@@ -72,6 +76,18 @@ public class ProductFragment extends Fragment {
         //on below line we are getting database reference.
         databaseReference = firebaseDatabase.getReference(Objects.requireNonNull(mAuth.getCurrentUser()).getUid() +"Products");
         addCourseFAB = view.findViewById(R.id.idFABAddCourse);
+
+        to_notification = view.findViewById(R.id.to_notification);
+        to_notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(getContext(), NotificationActivity.class);
+                startActivity(i);
+
+            }
+        });
+
 
         //get user profile
         FirebaseUser user = mAuth.getCurrentUser();
@@ -100,6 +116,7 @@ public class ProductFragment extends Fragment {
 
             }
         }
+
 
 
         addCourseFAB.setOnClickListener(new View.OnClickListener() {
