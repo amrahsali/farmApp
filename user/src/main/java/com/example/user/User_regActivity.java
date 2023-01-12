@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.FirebaseApp;
 
 public class User_regActivity extends AppCompatActivity  implements BottomNavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemSelectedListener {
     String[] languages = { "select language", "english", "hausa" };
@@ -24,6 +25,7 @@ public class User_regActivity extends AppCompatActivity  implements BottomNaviga
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_reg);
+
 
 
         Spinner spin = findViewById(R.id.spinnerLang);

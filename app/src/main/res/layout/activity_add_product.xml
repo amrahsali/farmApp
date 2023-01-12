@@ -96,12 +96,21 @@
 <!--                    android:textColorHint="@color/black"-->
 <!--                    android:textSize="14sp" />-->
 
-                <Button
-                    android:id="@+id/idEdtCourseImageLink"
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:gravity="center"
                     android:text="@string/select_image"/>
+
+                <ImageView
+                    android:id="@+id/idEdtCourseImageLink"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/image_foreground" />
             </com.google.android.material.textfield.TextInputLayout>
 
 

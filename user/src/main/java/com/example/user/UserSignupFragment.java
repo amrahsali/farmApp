@@ -1,64 +1,107 @@
 package com.example.user;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link UserSignupFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.Objects;
+
 public class UserSignupFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private EditText userNameEdt, passwordEdt, confirmPwdEdt;
+    private TextView loginTV;
+    private Button registerBtn;
+    private FirebaseAuth mAuth;
+    private ProgressBar loadingPB;
 
     public UserSignupFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment UserSignupFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static UserSignupFragment newInstance(String param1, String param2) {
-        UserSignupFragment fragment = new UserSignupFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
+       // mAuth = FirebaseAuth.getInstance();
+        //FirebaseApp.initializeApp(Context)
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_signup, container, false);
+        View view = inflater.inflate(R.layout.fragment_user_signup, container, false);
+        userNameEdt = view.findViewById(R.id.email);
+        passwordEdt = view.findViewById(R.id.password);
+        loadingPB = view.findViewById(R.id.idPBLoading);
+        FirebaseApp.initializeApp(getContext());
+        //loginTV = findViewById(R.id.idTVLoginUser);
+        registerBtn = view.findViewById(R.id.btnMain);
+        mAuth = FirebaseAuth.getInstance();
+
+        // adding click listener for register button.
+        registerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // hiding our progress bar.
+                loadingPB.setVisibility(View.VISIBLE);
+
+                // getting data from our edit text.
+                String userName = userNameEdt.getText().toString();
+                String pwd = passwordEdt.getText().toString();
+
+                // checking if the password and confirm password is equal or not.
+                if (TextUtils.isEmpty(userName) && TextUtils.isEmpty(pwd)) {
+
+                    // checking if the text fields are empty or not.
+                    Toast.makeText(getActivity(), "Please enter your credentials..", Toast.LENGTH_SHORT).show();
+                    loadingPB.setVisibility(View.GONE);
+                } else {
+
+                    // on below line we are creating a new user by passing email and password.
+                    mAuth.createUserWithEmailAndPassword(userName, pwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            // on below line we are checking if the task is success or not.
+                            if (task.isSuccessful()) {
+
+                                // in on success method we are hiding our progress bar and opening a login activity.
+                                loadingPB.setVisibility(View.GONE);
+                                Toast.makeText(getActivity(), "User Registered..", Toast.LENGTH_SHORT).show();
+                                Intent i = new Intent(getActivity(), User_regActivity.class);
+                                startActivity(i);
+                                requireActivity().finish();
+                            } else {
+
+                                // in else condition we are displaying a failure toast message.
+                                loadingPB.setVisibility(View.GONE);
+                                Toast.makeText(getActivity(), "Fail to register user..", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                    });
+                }
+            }
+        });
+
+        return view;
     }
 }

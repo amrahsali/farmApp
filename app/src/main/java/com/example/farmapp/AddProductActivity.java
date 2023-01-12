@@ -3,6 +3,8 @@ package com.example.farmapp;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -18,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -31,6 +34,8 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.io.ByteArrayOutputStream;
+import java.util.HashMap;
 import java.util.Objects;
 
 public class AddProductActivity extends AppCompatActivity {
@@ -40,7 +45,7 @@ public class AddProductActivity extends AppCompatActivity {
     private Button addCourseBtn;
     int SELECT_PICTURE = 200;
     private TextInputEditText courseNameEdt, courseDescEdt, coursePriceEdt;
-    Button productImgBtn;
+    ImageView productImgBtn;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     private FirebaseAuth mAuth;
@@ -98,37 +103,103 @@ public class AddProductActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loadingPB.setVisibility(View.VISIBLE);
-                // getting data from our edit text.
-                String courseName = courseNameEdt.getText().toString();
-                String courseDesc = courseDescEdt.getText().toString();
-                String coursePrice = coursePriceEdt.getText().toString();
-                Uri productImage = imageuri;
-                String productUri = productImage.toString();
-                getContentResolver().takePersistableUriPermission(imageuri, (Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION));
-                //String courseImg = productImgBtn.getText().toString();
 
-                courseID = courseName;
-                // on below line we are passing all data to our modal class.
-                ProductRVModal courseRVModal = new ProductRVModal(courseID, courseName, courseDesc, coursePrice, productUri);
+
                 // on below line we are calling a add value event
                 // to pass data to firebase database.
-                databaseReference.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        // on below line we are setting data in our firebase database.
-                        databaseReference.child(courseID).setValue(courseRVModal);
-                        // displaying a toast message.
-                        Toast.makeText(AddProductActivity.this, "Product Added..", Toast.LENGTH_SHORT).show();
-                        // starting a main activity.
-                        startActivity(new Intent(AddProductActivity.this, MainActivity.class));
-                    }
+                final String timestamp = String.valueOf(System.currentTimeMillis());
+                String filepathname = "Products/" + "product" + timestamp;
+                Bitmap bitmap = ((BitmapDrawable) productImgBtn.getDrawable()).getBitmap();
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+                byte[] data = byteArrayOutputStream.toByteArray();
 
+                StorageReference storageReference1 = FirebaseStorage.getInstance().getReference().child(filepathname);
+                storageReference1.putBytes(data).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        // displaying a failure message on below line.
-                        Toast.makeText(AddProductActivity.this, "Failed to add Product..", Toast.LENGTH_SHORT).show();
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        // getting the url of image uploaded
+                        Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+                        while (!uriTask.isSuccessful()) ;
+                        String downloadUri = uriTask.getResult().toString();
+                        if (uriTask.isSuccessful()) {
+                            // if task is successful the update the data into firebase
+//                            HashMap<Object, String> hashMap = new HashMap<>();
+//                            hashMap.put("uid", uid);
+//                            hashMap.put("uname", name);
+//                            hashMap.put("uemail", email);
+//                            hashMap.put("udp", dp);
+//                            hashMap.put("title", titl);
+//                            hashMap.put("description", description);
+//                            hashMap.put("uimage", downloadUri);
+//                            hashMap.put("ptime", timestamp);
+//                            hashMap.put("location", lat + "," + longi);
+
+                            // getting data from our edit text.
+                            String courseName = courseNameEdt.getText().toString();
+                            String courseDesc = courseDescEdt.getText().toString();
+                            String coursePrice = coursePriceEdt.getText().toString();
+                            Uri productImage = imageuri;
+                            String productUri = productImage.toString();
+                            getContentResolver().takePersistableUriPermission(imageuri, (Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION));
+                            //String courseImg = productImgBtn.getText().toString();
+
+                            courseID = courseName;
+                            // on below line we are passing all data to our modal class.
+                            ProductRVModal courseRVModal = new ProductRVModal(courseID, courseName, courseDesc, coursePrice, downloadUri);
+
+
+                            // set the data into firebase and then empty the title ,description and image data
+                           // DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Posts");
+//                            databaseReference.child(timestamp).setValue(hashMap)
+//                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                                        @Override
+//                                        public void onSuccess(Void aVoid) {
+//                                            pd.dismiss();
+//                                            Toast.makeText(getContext(), "Published", Toast.LENGTH_LONG).show();
+//                                            title.setText("");
+//                                            des.setText("");
+//                                            image.setImageURI(null);
+//                                            imageuri = null;
+//                                            startActivity(new Intent(getContext(), DashboardActivity.class));
+//                                            getActivity().finish();
+//                                        }
+//                                    }).addOnFailureListener(new OnFailureListener() {
+//                                        @Override
+//                                        public void onFailure(@NonNull Exception e) {
+//                                            pd.dismiss();
+//                                            Toast.makeText(getContext(), "Failed", Toast.LENGTH_LONG).show();
+//                                        }
+//                                    });
+
+                            databaseReference.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    // on below line we are setting data in our firebase database.
+                                    databaseReference.child(courseID).setValue(courseRVModal);
+                                    // displaying a toast message.
+                                    Toast.makeText(AddProductActivity.this, "Product Added..", Toast.LENGTH_SHORT).show();
+                                    // starting a main activity.
+                                    startActivity(new Intent(AddProductActivity.this, MainActivity.class));
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+                                    // displaying a failure message on below line.
+                                    Toast.makeText(AddProductActivity.this, "Failed to add Product..", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        loadingPB.setVisibility(View.GONE);
+                        Toast.makeText(AddProductActivity.this, "Failed", Toast.LENGTH_LONG).show();
                     }
                 });
+
+
             }
         });
     }
@@ -149,7 +220,7 @@ public class AddProductActivity extends AppCompatActivity {
                     // update the preview image in the layout
 
                     imageuri = data.getData();
-                    //Picasso.get().load(imageuri).into(productImageView);
+                    Picasso.get().load(imageuri).into(productImgBtn);
                     //IVPreviewImage.setImageURI(selectedImageUri);
                 }
             }

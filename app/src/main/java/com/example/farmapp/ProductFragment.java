@@ -28,6 +28,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -106,10 +107,12 @@ public class ProductFragment extends Fragment {
 
 
 
-                if (profile.getDisplayName() == null){
+                if (profile.getPhotoUrl() != null){
 
-                    //product_profile_img.setImageURI(photoUrl);;
-                }else {
+                    //product_profile_img.setImageURI(photoUrl);
+                    Picasso.get().load(photoUrl).into(product_profile_img);
+                }
+                if (profile.getDisplayName() != null){
                     product_profile_name.setText(name);
                 }
 

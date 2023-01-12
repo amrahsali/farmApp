@@ -4,6 +4,8 @@ import static android.app.Activity.RESULT_OK;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,12 +24,22 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
+
+import java.io.ByteArrayOutputStream;
 
 
 public class profileFragment extends Fragment {
@@ -116,37 +128,66 @@ public class profileFragment extends Fragment {
         update_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //opening a new activity for adding a course.
-                String fulname = username.getText().toString();
-                String emailaddress = emailad.getText().toString();
-                String phoneNumberData = phoneNumber.getText().toString();
 
-               // Toast.makeText(getContext(), "Profile updated", Toast.LENGTH_LONG).show();
-                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                        .setDisplayName(fulname)
-                        .setPhotoUri(imageuri)
-                        .build();
+                final String timestamp = String.valueOf(System.currentTimeMillis());
+                String filepathname = "Profile/" + "images" + timestamp;
+                Bitmap bitmap = ((BitmapDrawable) profileimg.getDrawable()).getBitmap();
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+                byte[] data = byteArrayOutputStream.toByteArray();
 
-                assert user != null;
-                user.updateProfile(profileUpdates)
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    Log.d(TAG, "User profile updated.");
-                                    Toast.makeText(getContext(), "User profile updated.", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
-                user.updateEmail(emailaddress)
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    Log.d(TAG, "User email address updated.");
-                                }
-                            }
-                        });
+                StorageReference storageReference1 = FirebaseStorage.getInstance().getReference().child(filepathname);
+                storageReference1.putBytes(data).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        // getting the url of image uploaded
+                        Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+                        while (!uriTask.isSuccessful()) ;
+                        String downloadUri = uriTask.getResult().toString();
+                        if (uriTask.isSuccessful()) {
+
+                            String fulname = username.getText().toString();
+                            String emailaddress = emailad.getText().toString();
+                            String phoneNumberData = phoneNumber.getText().toString();
+
+                            // Toast.makeText(getContext(), "Profile updated", Toast.LENGTH_LONG).show();
+                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                    .setDisplayName(fulname)
+                                    .setPhotoUri(Uri.parse(downloadUri))
+                                    .build();
+
+                            assert user != null;
+                            user.updateProfile(profileUpdates)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Log.d(TAG, "User profile updated.");
+                                                Toast.makeText(getContext(), "User profile updated.", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+                            user.updateEmail(emailaddress)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Log.d(TAG, "User email address updated.");
+                                            }
+                                        }
+                                    });
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        //loadingPB.setVisibility(View.GONE);
+                        Toast.makeText(getActivity(), "Failed", Toast.LENGTH_LONG).show();
+                    }
+                });
+
+
+
 
 
             }

@@ -50,6 +50,7 @@
                 android:orientation="horizontal"
                 android:background="@drawable/boarder_bg">
                 <EditText
+                    android:id="@+id/farmer_email"
                     android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -70,6 +71,7 @@
                 android:orientation="horizontal"
                 android:background="@drawable/boarder_bg">
                 <EditText
+                    android:id="@+id/farmer_pass"
                     android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
