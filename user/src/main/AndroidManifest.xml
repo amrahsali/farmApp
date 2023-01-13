@@ -51,6 +51,13 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".User_ProfileFragment"
+            android:exported="false" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".User_productFragment"
             android:exported="false" >
             <meta-data
