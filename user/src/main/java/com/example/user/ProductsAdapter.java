@@ -8,8 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,7 +38,7 @@ public class  ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewH
     @Override
     public ProductsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // inflating our layout file on below line.
-        View view = LayoutInflater.from(context).inflate(R.layout.product_cardview, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.user_product_cardview, parent, false);
         return new ViewHolder(view);
     }
 
@@ -52,6 +54,12 @@ public class  ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewH
         Picasso.get().load(courseRVModal.getProductImg()).into(holder.product_image);
         // adding animation to recycler view item on below line.
         setAnimation(holder.itemView, holder.getAdapterPosition());
+        holder.add_to_cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, holder.product_name.getText() + "added to cart", Toast.LENGTH_SHORT).show();
+            }
+        });
 //        holder.product_image.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -78,6 +86,7 @@ public class  ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewH
         // creating variable for our image view and text view on below line.
         private ImageView product_image;
         private TextView product_name, Product_price, Product_description;
+        private Button add_to_cart;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -86,11 +95,13 @@ public class  ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewH
             product_image = itemView.findViewById(R.id.product_image);
             Product_description = itemView.findViewById(R.id.product_description);
             Product_price = itemView.findViewById(R.id.product_price);
+            add_to_cart = itemView.findViewById(R.id.cart_add);
         }
     }
 
     // creating a interface for on click
     public interface CourseClickInterface {
         void onCourseClick(int position);
+
     }
 }

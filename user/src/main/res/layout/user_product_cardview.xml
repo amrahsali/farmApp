@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:padding="10dp"
-    android:layout_height="130dp">
+    android:layout_height="140dp">
 
 
 <androidx.cardview.widget.CardView
@@ -27,11 +27,12 @@
            android:src="@drawable/mango"/>
 
 
-        <RelativeLayout
+        <LinearLayout
             android:paddingStart="10dp"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             android:padding="5dp">
 
             <LinearLayout
@@ -69,7 +70,16 @@
                     android:textStyle="bold"
                     android:textColor="@color/green" />
             </LinearLayout>
-        </RelativeLayout>
+            <Button
+                android:id="@+id/cart_add"
+                android:layout_width="match_parent"
+                android:backgroundTint="@color/green"
+                android:drawableLeft="@drawable/ic_round_shopping_cart_24"
+                android:layout_height="40dp"
+                android:layout_gravity="end"
+                android:text="add to cart"/>
+
+        </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
 
