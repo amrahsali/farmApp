@@ -29,6 +29,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -49,6 +50,7 @@ public class ProductFragment extends Fragment {
     private ProductsAdapter courseRVAdapter;
     ImageView to_notification;
     Button addToCart;
+    String uid;
 
 
 
@@ -71,13 +73,14 @@ public class ProductFragment extends Fragment {
         tuber  = view.findViewById(R.id.tuber);
         product_profile_img = view.findViewById(R.id.product_profile_img);
         product_profile_name = view.findViewById(R.id.product_profile_name);
+        uid = FirebaseAuth.getInstance().getUid();
 
         recyclerView = view.findViewById(R.id.rvNumbers);
         courseRVModalArrayList = new ArrayList<>();
         firebaseDatabase = FirebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
         //on below line we are getting database reference.
-        databaseReference = firebaseDatabase.getReference(Objects.requireNonNull(mAuth.getCurrentUser()).getUid() +"Products");
+        databaseReference = firebaseDatabase.getReference("Products");
         addCourseFAB = view.findViewById(R.id.idFABAddCourse);
 
         to_notification = view.findViewById(R.id.to_notification);
@@ -172,9 +175,7 @@ public class ProductFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getActivity(), "Tubers", Toast.LENGTH_SHORT).show();
-
             }
-
         });
 
         courseRVAdapter = new ProductsAdapter(courseRVModalArrayList, getContext());
@@ -195,8 +196,9 @@ public class ProductFragment extends Fragment {
     private void getProducts() {
         //on below line clearing our list.
         courseRVModalArrayList.clear();
+        Query query = databaseReference.orderByChild("userID").equalTo(uid);
         //on below line we are calling add child event listener method to read the data.
-        databaseReference.addChildEventListener(new ChildEventListener() {
+        query.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 //on below line we are hiding our progress bar.

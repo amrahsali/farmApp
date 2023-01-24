@@ -27,9 +27,11 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -41,12 +43,14 @@ public class User_productFragment extends Fragment {
     private RecyclerView recyclerView;
     private FloatingActionButton addCourseFAB;
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
+    DatabaseReference reference;
     private FirebaseAuth mAuth;
     private ArrayList<ProductRVModal> courseRVModalArrayList;
+    List<ModelProducts> usersList;
     //private GridRecyclerViewHolder courseRVAdapter;
     private ProductsAdapter courseRVAdapter;
     ImageView to_notification;
+    AdapterProducts adapterProducts;
 
     public User_productFragment() {
         // Required empty public constructor
@@ -78,7 +82,8 @@ public class User_productFragment extends Fragment {
         firebaseDatabase = FirebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
         //on below line we are getting database reference.
-        databaseReference = firebaseDatabase.getReference(Objects.requireNonNull(mAuth.getCurrentUser()).getUid() +"Products");
+
+        reference = FirebaseDatabase.getInstance().getReference("Products");
 
 
         to_notification = view.findViewById(R.id.to_notification);
@@ -122,17 +127,14 @@ public class User_productFragment extends Fragment {
             }
         }
 
-        all_card.setOnClickListener( new View.OnClickListener()
-        {
+        all_card.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
                 Toast.makeText(getActivity(), "all", Toast.LENGTH_SHORT).show();
             }
         });
-
-        vegies.setOnClickListener( new View.OnClickListener()
-        {
+        vegies.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
@@ -163,44 +165,111 @@ public class User_productFragment extends Fragment {
 
         });
 
-        courseRVAdapter = new ProductsAdapter(courseRVModalArrayList, getContext());
+        usersList = new ArrayList<>();
+        adapterProducts = new AdapterProducts(getContext(), usersList);
         // Toast.makeText(context, courseRVModalArrayList.get(0).toString(), Toast.LENGTH_SHORT).show();
+
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         //recyclerView.setAdapter(new MyRecyclerViewAdapter(1234), this);
-        recyclerView.setAdapter(courseRVAdapter);
-        getProducts();
+        recyclerView.setAdapter(adapterProducts);
+        getAllUsers();
 
         return view;
     }
 
-    private void getProducts() {
-        //on below line clearing our list.
-        courseRVModalArrayList.clear();
-        //on below line we are calling add child event listener method to read the data.
-        databaseReference.addChildEventListener(new ChildEventListener() {
+//    private void getProducts() {
+//        //on below line clearing our list.
+//        courseRVModalArrayList.clear();
+//        //on below line we are calling add child event listener method to read the data.
+//        databaseReference.addChildEventListener(new ChildEventListener() {
+//            @Override
+//            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+//                //on below line we are hiding our progress bar.
+//                //loadingPB.setVisibility(View.GONE);
+//                //adding snapshot to our array list on below line.
+//                courseRVModalArrayList.add(snapshot.getValue(ProductRVModal.class));
+//                //notifying our adapter that data has changed.
+//                courseRVAdapter.notifyDataSetChanged();
+//            }
+//
+//            @Override
+//            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+//                //this method is called when new child is added we are notifying our adapter and making progress bar visibility as gone.
+//                //loadingPB.setVisibility(View.GONE);
+//                courseRVAdapter.notifyDataSetChanged();
+//            }
+//
+//            @Override
+//            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+//                //notifying our adapter when child is removed.
+//                courseRVAdapter.notifyDataSetChanged();
+//                //loadingPB.setVisibility(View.GONE);
+//
+//            }
+//
+//            @Override
+//            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+//                //notifying our adapter when child is moved.
+//                courseRVAdapter.notifyDataSetChanged();
+//                //loadingPB.setVisibility(View.GONE);
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//    }
+
+    private void getAllUsers() {
+        final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+//        reference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                usersList.clear();
+//                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+//                    ModelProducts modelUsers = dataSnapshot1.getValue(ModelProducts.class);
+//                    //Toast.makeText(getActivity(), modelUsers.getUid(), Toast.LENGTH_SHORT).show();
+//                    if (modelUsers.getUid() != null ) {
+//                        usersList.add(modelUsers);
+//
+//                    }
+//                    adapterProducts = new AdapterProducts(getActivity(), usersList);
+//                    recyclerView.setAdapter(adapterProducts);
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+
+        reference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 //on below line we are hiding our progress bar.
                 //loadingPB.setVisibility(View.GONE);
                 //adding snapshot to our array list on below line.
-                courseRVModalArrayList.add(snapshot.getValue(ProductRVModal.class));
+                usersList.add(snapshot.getValue(ModelProducts.class));
                 //notifying our adapter that data has changed.
-                courseRVAdapter.notifyDataSetChanged();
+                adapterProducts.notifyDataSetChanged();
             }
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 //this method is called when new child is added we are notifying our adapter and making progress bar visibility as gone.
                 //loadingPB.setVisibility(View.GONE);
-                courseRVAdapter.notifyDataSetChanged();
+                adapterProducts.notifyDataSetChanged();
             }
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot snapshot) {
                 //notifying our adapter when child is removed.
-                courseRVAdapter.notifyDataSetChanged();
+                adapterProducts.notifyDataSetChanged();
                 //loadingPB.setVisibility(View.GONE);
 
             }
@@ -208,7 +277,7 @@ public class User_productFragment extends Fragment {
             @Override
             public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 //notifying our adapter when child is moved.
-                courseRVAdapter.notifyDataSetChanged();
+                adapterProducts.notifyDataSetChanged();
                 //loadingPB.setVisibility(View.GONE);
             }
 
@@ -218,4 +287,5 @@ public class User_productFragment extends Fragment {
             }
         });
     }
+
 }

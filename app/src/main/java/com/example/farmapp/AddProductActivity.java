@@ -71,7 +71,7 @@ public class AddProductActivity extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
         // on below line creating our database reference.
-        databaseReference = firebaseDatabase.getReference(Objects.requireNonNull(mAuth.getCurrentUser()).getUid() +"Products");
+        databaseReference = firebaseDatabase.getReference("Products");
         mStorageref = FirebaseStorage.getInstance().getReference("Upload Photos");
 
         productImgBtn.setOnClickListener(new View.OnClickListener() {
@@ -123,54 +123,20 @@ public class AddProductActivity extends AppCompatActivity {
                         while (!uriTask.isSuccessful()) ;
                         String downloadUri = uriTask.getResult().toString();
                         if (uriTask.isSuccessful()) {
-                            // if task is successful the update the data into firebase
-//                            HashMap<Object, String> hashMap = new HashMap<>();
-//                            hashMap.put("uid", uid);
-//                            hashMap.put("uname", name);
-//                            hashMap.put("uemail", email);
-//                            hashMap.put("udp", dp);
-//                            hashMap.put("title", titl);
-//                            hashMap.put("description", description);
-//                            hashMap.put("uimage", downloadUri);
-//                            hashMap.put("ptime", timestamp);
-//                            hashMap.put("location", lat + "," + longi);
 
                             // getting data from our edit text.
                             String courseName = courseNameEdt.getText().toString();
                             String courseDesc = courseDescEdt.getText().toString();
                             String coursePrice = coursePriceEdt.getText().toString();
                             Uri productImage = imageuri;
+                            String Uid = mAuth.getUid();
                             String productUri = productImage.toString();
                             getContentResolver().takePersistableUriPermission(imageuri, (Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION));
                             //String courseImg = productImgBtn.getText().toString();
 
                             courseID = courseName;
                             // on below line we are passing all data to our modal class.
-                            ProductRVModal courseRVModal = new ProductRVModal(courseID, courseName, courseDesc, coursePrice, downloadUri);
-
-
-                            // set the data into firebase and then empty the title ,description and image data
-                           // DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Posts");
-//                            databaseReference.child(timestamp).setValue(hashMap)
-//                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                                        @Override
-//                                        public void onSuccess(Void aVoid) {
-//                                            pd.dismiss();
-//                                            Toast.makeText(getContext(), "Published", Toast.LENGTH_LONG).show();
-//                                            title.setText("");
-//                                            des.setText("");
-//                                            image.setImageURI(null);
-//                                            imageuri = null;
-//                                            startActivity(new Intent(getContext(), DashboardActivity.class));
-//                                            getActivity().finish();
-//                                        }
-//                                    }).addOnFailureListener(new OnFailureListener() {
-//                                        @Override
-//                                        public void onFailure(@NonNull Exception e) {
-//                                            pd.dismiss();
-//                                            Toast.makeText(getContext(), "Failed", Toast.LENGTH_LONG).show();
-//                                        }
-//                                    });
+                            ProductRVModal courseRVModal = new ProductRVModal(courseID, courseName, courseDesc, coursePrice, downloadUri, Uid);
 
                             databaseReference.addValueEventListener(new ValueEventListener() {
                                 @Override

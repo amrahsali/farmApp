@@ -48,6 +48,37 @@
             android:gravity="center"
             android:orientation="vertical">
 
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/boarder_bg">
+
+
+
+                <EditText
+                    android:id="@+id/profile_name"
+                    android:padding="10dp"
+                    android:layout_width="0dp"
+                    android:maxLines="1"
+                    android:inputType="textEmailAddress"
+                    android:scrollHorizontally="true"
+                    android:ellipsize="end"
+                    android:layout_weight="5"
+                    android:layout_height="50dp"
+                    android:drawableTint="@color/green"
+                    android:background="@null"
+                    android:drawableStart="@drawable/person"
+                    android:drawablePadding="10dp"
+                    android:hint="Full name"/>
+
+
+            </LinearLayout>
+
 
             <Space
                 android:layout_width="wrap_content"
@@ -58,6 +89,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:background="@drawable/boarder_bg">
+
+
 
                 <EditText
                     android:id="@+id/email"
@@ -71,7 +104,7 @@
                     android:layout_height="50dp"
                     android:drawableTint="@color/green"
                     android:background="@null"
-                    android:drawableStart="@drawable/ic_round_local_phone_24"
+                    android:drawableStart="@drawable/ic_baseline_email_24"
                     android:drawablePadding="10dp"
                     android:hint="email"/>
 

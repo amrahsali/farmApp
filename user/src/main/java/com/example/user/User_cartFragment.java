@@ -1,64 +1,143 @@
 package com.example.user;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link User_cartFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class User_cartFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    Context context;
+    private RecyclerView recyclerView;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference reference;
+    private FirebaseAuth mAuth;
+    List<CartRVModal> usersList;
+    AdapterCart adapterCart;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public User_cartFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment User_cartFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static User_cartFragment newInstance(String param1, String param2) {
-        User_cartFragment fragment = new User_cartFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_cart, container, false);
+       View view = inflater.inflate(R.layout.fragment_user_cart, container, false);
+        recyclerView = view.findViewById(R.id.cart_rv);
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+        //on below line we are getting database reference.
+
+        reference = FirebaseDatabase.getInstance().getReference("Cart");
+        usersList = new ArrayList<>();
+        adapterCart = new AdapterCart(getContext(), usersList);
+        // Toast.makeText(context, courseRVModalArrayList.get(0).toString(), Toast.LENGTH_SHORT).show();
+
+
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        //recyclerView.setAdapter(new MyRecyclerViewAdapter(1234), this);
+        recyclerView.setAdapter(adapterCart);
+        getAllUsers();
+
+        return view;
+    }
+
+
+    private void getAllUsers() {
+        final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+//        reference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                usersList.clear();
+//                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+//                    ModelProducts modelUsers = dataSnapshot1.getValue(ModelProducts.class);
+//                    //Toast.makeText(getActivity(), modelUsers.getUid(), Toast.LENGTH_SHORT).show();
+//                    if (modelUsers.getUid() != null ) {
+//                        usersList.add(modelUsers);
+//
+//                    }
+//                    adapterProducts = new AdapterProducts(getActivity(), usersList);
+//                    recyclerView.setAdapter(adapterProducts);
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+
+        reference.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                //on below line we are hiding our progress bar.
+                //loadingPB.setVisibility(View.GONE);
+                //adding snapshot to our array list on below line.
+                usersList.add(snapshot.getValue(CartRVModal.class));
+                //notifying our adapter that data has changed.
+                adapterCart.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                //this method is called when new child is added we are notifying our adapter and making progress bar visibility as gone.
+                //loadingPB.setVisibility(View.GONE);
+                adapterCart.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                //notifying our adapter when child is removed.
+                adapterCart.notifyDataSetChanged();
+                //loadingPB.setVisibility(View.GONE);
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                //notifying our adapter when child is moved.
+                adapterCart.notifyDataSetChanged();
+                //loadingPB.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }

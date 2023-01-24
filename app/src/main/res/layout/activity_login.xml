@@ -50,32 +50,6 @@
 
 
 
-
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/new_user"
-            android:textSize="15sp" />
-
-        <TextView
-            android:onClick="TosignUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/green"
-            android:text="@string/create_account"
-            android:textSize="15sp" />
-    </LinearLayout>
-
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:paddingTop="20dp"

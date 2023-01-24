@@ -21,12 +21,16 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 public class UserSignupFragment extends Fragment {
 
-    private EditText userNameEdt, passwordEdt, confirmPwdEdt;
+    private EditText userNameEdt, passwordEdt, profileName;
     private TextView loginTV;
     private Button registerBtn;
     private FirebaseAuth mAuth;
@@ -51,6 +55,7 @@ public class UserSignupFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_user_signup, container, false);
         userNameEdt = view.findViewById(R.id.email);
         passwordEdt = view.findViewById(R.id.password);
+        profileName = view.findViewById(R.id.profile_name);
         loadingPB = view.findViewById(R.id.idPBLoading);
         FirebaseApp.initializeApp(getContext());
         //loginTV = findViewById(R.id.idTVLoginUser);
@@ -67,6 +72,7 @@ public class UserSignupFragment extends Fragment {
                 // getting data from our edit text.
                 String userName = userNameEdt.getText().toString();
                 String pwd = passwordEdt.getText().toString();
+                String profileN = profileName.getText().toString();
 
                 // checking if the password and confirm password is equal or not.
                 if (TextUtils.isEmpty(userName) && TextUtils.isEmpty(pwd)) {
@@ -82,6 +88,23 @@ public class UserSignupFragment extends Fragment {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             // on below line we are checking if the task is success or not.
                             if (task.isSuccessful()) {
+
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                String email = user.getEmail();
+                                String uid = user.getUid();
+                                HashMap<Object, String> hashMap = new HashMap<>();
+                                hashMap.put("email", email);
+                                hashMap.put("uid", uid);
+                                hashMap.put("fullname", profileN);
+                                hashMap.put("image", "");
+                                hashMap.put("phone", "");
+                                hashMap.put("homeAddress", "");
+                                hashMap.put("farmAddress", "");
+                                hashMap.put("products", "");
+
+                                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                                DatabaseReference reference = database.getReference("Users");
+                                reference.child(uid).setValue(hashMap);
 
                                 // in on success method we are hiding our progress bar and opening a login activity.
                                 loadingPB.setVisibility(View.GONE);

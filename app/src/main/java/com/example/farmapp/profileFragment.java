@@ -23,6 +23,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -33,6 +34,9 @@ import com.google.firebase.auth.UserInfo;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -40,6 +44,7 @@ import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
+import java.util.HashMap;
 
 
 public class profileFragment extends Fragment {
@@ -49,6 +54,8 @@ public class profileFragment extends Fragment {
     ImageView profileimg;
     int SELECT_PICTURE = 200;
     Uri selectedImageUri, imageuri;
+    DatabaseReference databaseReference;
+    FirebaseDatabase firebaseDatabase;
 
 
     public profileFragment(){
@@ -69,6 +76,8 @@ public class profileFragment extends Fragment {
         farmAddress = view.findViewById(R.id.userFarmAddress);
         profileimg = view.findViewById(R.id.userprofile);
         emailad = view.findViewById(R.id.user_email);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference("Farmers");
 
 
         profileimg.setOnClickListener(new View.OnClickListener() {
@@ -97,32 +106,38 @@ public class profileFragment extends Fragment {
 
         //get user profile
         FirebaseUser user = mAuth.getCurrentUser();
-        if (user != null) {
-            for (UserInfo profile : user.getProviderData()) {
-                // Id of the provider (ex: google.com)
-                String providerId = profile.getProviderId();
 
-                // UID specific to the provider
-                String uid = profile.getUid();
-
-                // Name, email address, and profile photo Url
-                String name = profile.getDisplayName();
-                String email = profile.getEmail();
-                Uri photoUrl = profile.getPhotoUrl();
-                String phone = profile.getPhoneNumber();
-
-                if (!name.isEmpty()){
+        assert user != null;
+        Query query = databaseReference.orderByChild("email").equalTo(user.getEmail());
+        //Toast.makeText(getActivity(), firebaseUser.getEmail(), Toast.LENGTH_SHORT).show();
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    String name = "" + dataSnapshot1.child("fullname").getValue();
+                    String emaill = "" + dataSnapshot1.child("email").getValue();
+                    String image = "" + dataSnapshot1.child("image").getValue();
+                    String phone = "" + dataSnapshot1.child("phone").getValue();
+                    String homeAdd = "" + dataSnapshot1.child("homeAddress").getValue();
+                    String farmAdd = "" + dataSnapshot1.child("farmAddress").getValue();
                     username.setText(name);
-                   // profileimg.setImageURI(photoUrl);
-                    //Picasso.with(getContext()).load(photoUrl).into(imageView);
-                    Picasso.get().load(photoUrl).into(profileimg);
-                    emailad.setText(email);
+                    emailad.setText(emaill);
                     phoneNumber.setText(phone);
-                }
+                    homeAddress.setText(homeAdd);
+                    farmAddress.setText(farmAdd);
+                    try {
+                        Glide.with(getActivity()).load(image).into(profileimg);
+                    } catch (Exception e) {
 
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        }
+        });
 
         // displaying a toast message on user update profile.
         update_btn.setOnClickListener(new View.OnClickListener() {
@@ -140,7 +155,7 @@ public class profileFragment extends Fragment {
                 storageReference1.putBytes(data).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        // getting the url of image uploaded
+                         //getting the url of image uploaded
                         Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
                         while (!uriTask.isSuccessful()) ;
                         String downloadUri = uriTask.getResult().toString();
@@ -149,50 +164,41 @@ public class profileFragment extends Fragment {
                             String fulname = username.getText().toString();
                             String emailaddress = emailad.getText().toString();
                             String phoneNumberData = phoneNumber.getText().toString();
+                            String farmaddress = farmAddress.getText().toString();
+                            String homeaddress = homeAddress.getText().toString();
+
 
                             // Toast.makeText(getContext(), "Profile updated", Toast.LENGTH_LONG).show();
-                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                                    .setDisplayName(fulname)
-                                    .setPhotoUri(Uri.parse(downloadUri))
-                                    .build();
 
-                            assert user != null;
-                            user.updateProfile(profileUpdates)
-                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful()) {
-                                                Log.d(TAG, "User profile updated.");
-                                                Toast.makeText(getContext(), "User profile updated.", Toast.LENGTH_SHORT).show();
-                                            }
-                                        }
-                                    });
-                            user.updateEmail(emailaddress)
-                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful()) {
-                                                Log.d(TAG, "User email address updated.");
-                                            }
-                                        }
-                                    });
-                        }
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        //loadingPB.setVisibility(View.GONE);
-                        Toast.makeText(getActivity(), "Failed", Toast.LENGTH_LONG).show();
+                            // updating our image url into the realtime database
+                            HashMap<String, Object> hashMap = new HashMap<>();
+                            hashMap.put("image", downloadUri.toString());
+                            hashMap.put("name", fulname);
+                            hashMap.put("phone", phoneNumberData);
+                            hashMap.put("email", emailaddress);
+                            hashMap.put("farmAddress", farmaddress);
+                            hashMap.put("homeAddress", homeaddress);
+
+                            databaseReference.child(user.getUid()).updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Log.d(TAG, "Profile updated.");
+                                    Toast.makeText(getContext(), "Profile Updated", Toast.LENGTH_SHORT).show();
+                                }
+                             }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    //loadingPB.setVisibility(View.GONE);
+                                    Toast.makeText(getActivity(), "Failed", Toast.LENGTH_LONG).show();
+                                }
+                            });
+                         }
                     }
                 });
-
-
-
-
-
             }
-
         });
+
+
 
 
         // displaying a toast message on user logged out inside on click.

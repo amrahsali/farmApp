@@ -1,16 +1,17 @@
-package com.example.farmapp;
+package com.example.user;
+
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class ProductRVModal implements Parcelable {
+public class CartRVModal implements Parcelable {
     // creating variables for our different fields.
     private String productName;
     private String productDescription;
     private String productPrice;
     private String productImg;
     private String productId;
-    private String userID;
+
 
     public String getProductId() {
         return productId;
@@ -20,12 +21,13 @@ public class ProductRVModal implements Parcelable {
         this.productId = productId;
     }
 
+
     // creating an empty constructor.
-    public ProductRVModal() {
+    public CartRVModal() {
 
     }
 
-    protected ProductRVModal(Parcel in) {
+    protected CartRVModal(Parcel in) {
         productName = in.readString();
         productId = in.readString();
         productDescription = in.readString();
@@ -33,15 +35,15 @@ public class ProductRVModal implements Parcelable {
         productImg = in.readString();
     }
 
-    public static final Creator<ProductRVModal> CREATOR = new Creator<ProductRVModal>() {
+    public static final Creator<CartRVModal> CREATOR = new Creator<CartRVModal>() {
         @Override
-        public ProductRVModal createFromParcel(Parcel in) {
-            return new ProductRVModal(in);
+        public CartRVModal createFromParcel(Parcel in) {
+            return new CartRVModal(in);
         }
 
         @Override
-        public ProductRVModal[] newArray(int size) {
-            return new ProductRVModal[size];
+        public CartRVModal[] newArray(int size) {
+            return new CartRVModal[size];
         }
     };
 
@@ -74,25 +76,16 @@ public class ProductRVModal implements Parcelable {
         return productImg;
     }
 
-    public void setUserID(String userId) {
-        this.userID = userId;
-    }
-
-    public String getUserID() {
-        return userID;
-    }
-
     public void setProductImg(String productImg) {
         this.productImg = productImg;
     }
 
-    public ProductRVModal(String productId, String productName, String productDescription, String productPrice, String productImg, String userID) {
+    public CartRVModal(String productId, String productName, String productDescription, String productPrice, String productImg) {
         this.productName = productName;
         this.productId = productId;
         this.productDescription = productDescription;
         this.productPrice = productPrice;
         this.productImg = productImg;
-        this.userID = userID;
     }
 
     @Override
@@ -107,6 +100,5 @@ public class ProductRVModal implements Parcelable {
         dest.writeString(productDescription);
         dest.writeString(productPrice);
         dest.writeString(productImg);
-        dest.writeString(userID);
     }
 }
