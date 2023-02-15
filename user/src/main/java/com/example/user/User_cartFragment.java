@@ -41,6 +41,7 @@ public class User_cartFragment extends Fragment {
     String uid;
 
 
+
     public User_cartFragment() {
         // Required empty public constructor
     }
