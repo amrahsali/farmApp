@@ -55,7 +55,7 @@ public class AdapterProducts extends RecyclerView.Adapter<AdapterProducts.MyHold
 
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, final int position) {
-        final String hisuid = list.get(position).getUid();
+        final String hisuid = firebaseAuth.getUid();
         String productImage = list.get(position).getProductImg();
         String productName = list.get(position).getProductName();
         String productDesc = list.get(position).getProductDescription();

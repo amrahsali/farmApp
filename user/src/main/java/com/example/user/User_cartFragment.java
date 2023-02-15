@@ -70,7 +70,7 @@ public class User_cartFragment extends Fragment {
 
         reference = FirebaseDatabase.getInstance().getReference("Cart");
         usersList = new ArrayList<>();
-        adapterCart = new AdapterCart(getContext(), usersList);
+        adapterCart = new AdapterCart(usersList, getContext());
         // Toast.makeText(context, courseRVModalArrayList.get(0).toString(), Toast.LENGTH_SHORT).show();
 
 
@@ -106,8 +106,8 @@ public class User_cartFragment extends Fragment {
 //
 //            }
 //        });
-
-        Query query = reference.orderByChild("userID").equalTo(uid);
+        usersList.clear();
+        Query query = reference.orderByChild("uid").equalTo(uid);
         query.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {

@@ -29,7 +29,7 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.MyHolder> {
     DatabaseReference databaseReference;
     String uid;
 
-    public AdapterCart(Context context, List<CartRVModal> list) {
+    public AdapterCart(List<CartRVModal> list, Context context) {
         this.context = context;
         this.list = list;
         firebaseAuth = FirebaseAuth.getInstance();
