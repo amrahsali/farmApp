@@ -1,29 +1,24 @@
 package com.example.user;
 
 
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+import static android.app.PendingIntent.getActivity;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class AdapterCart extends RecyclerView.Adapter<AdapterCart.MyHolder> {
@@ -56,22 +51,32 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.MyHolder> {
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, final int position) {
        // final String hisuid = list.get(position).getUid();
-        String productImage = list.get(position).getProductImg();
-        String productName = list.get(position).getProductName();
+        final int unit = 0;
+        String productImage = list.get(position).getImage();
+        String productName = list.get(position).getName();
         String productDesc = list.get(position).getProductDescription();
-        String productPrice = list.get(position).getProductPrice();
+        String productPrice = list.get(position).getPrice();
         holder.name.setText(productName);
-        holder.itemUnit.setText(productDesc);
+        holder.itemUnit.setText(String.valueOf(unit));
         holder.price.setText(productPrice);
         holder.addUnit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        int u = Integer.parseInt(holder.itemUnit.getText().toString());
+                        u++;
+                        holder.itemUnit.setText(String.valueOf(u));
                        // Toast.makeText(context, "this is:" + productName, Toast.LENGTH_SHORT).show();
                     }
         });
         holder.reduceUnit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int u = Integer.parseInt(holder.itemUnit.getText().toString());
+                if (u != 0){
+                    u--;
+                    holder.itemUnit.setText(String.valueOf(u));
+                }
+
                 // Toast.makeText(context, "this is:" + productName, Toast.LENGTH_SHORT).show();
             }
         });

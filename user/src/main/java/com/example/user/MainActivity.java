@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
     BottomNavigationView bottomNavigationView;
+    int totalCart;
 
 
     @Override
@@ -21,6 +23,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
         bottomNavigationView.setSelectedItemId(R.id.user_product);
+    }
+
+    public int getTotalCart() {
+        return totalCart;
+    }
+
+    public void setTotalCart(int totalCart) {
+        this.totalCart = totalCart;
     }
 
     User_productFragment userProduct = new User_productFragment();

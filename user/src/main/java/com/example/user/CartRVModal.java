@@ -6,10 +6,10 @@ import android.os.Parcelable;
 
 public class CartRVModal implements Parcelable {
     // creating variables for our different fields.
-    private String productName;
+    private String name;
     private String productDescription;
-    private String productPrice;
-    private String productImg;
+    private String price;
+    private String image;
     private String productId;
 
 
@@ -28,11 +28,11 @@ public class CartRVModal implements Parcelable {
     }
 
     protected CartRVModal(Parcel in) {
-        productName = in.readString();
+        name = in.readString();
         productId = in.readString();
         productDescription = in.readString();
-        productPrice = in.readString();
-        productImg = in.readString();
+        price = in.readString();
+        image = in.readString();
     }
 
     public static final Creator<CartRVModal> CREATOR = new Creator<CartRVModal>() {
@@ -48,12 +48,12 @@ public class CartRVModal implements Parcelable {
     };
 
     // creating getter and setter methods.
-    public String getProductName() {
-        return productName;
+    public String getName() {
+        return name;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getProductDescription() {
@@ -64,28 +64,28 @@ public class CartRVModal implements Parcelable {
         this.productDescription = productDescription;
     }
 
-    public String getProductPrice() {
-        return productPrice;
+    public String getPrice() {
+        return price;
     }
 
-    public void setProductPrice(String productPrice) {
-        this.productPrice = productPrice;
+    public void setPrice(String price) {
+        this.price = price;
     }
 
-    public String getProductImg() {
-        return productImg;
+    public String getImage() {
+        return image;
     }
 
-    public void setProductImg(String productImg) {
-        this.productImg = productImg;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public CartRVModal(String productId, String productName, String productDescription, String productPrice, String productImg) {
-        this.productName = productName;
+    public CartRVModal(String productId, String name, String productDescription, String price, String image) {
+        this.name = name;
         this.productId = productId;
         this.productDescription = productDescription;
-        this.productPrice = productPrice;
-        this.productImg = productImg;
+        this.price = price;
+        this.image = image;
     }
 
     @Override
@@ -95,10 +95,10 @@ public class CartRVModal implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(productName);
+        dest.writeString(name);
         dest.writeString(productId);
         dest.writeString(productDescription);
-        dest.writeString(productPrice);
-        dest.writeString(productImg);
+        dest.writeString(price);
+        dest.writeString(image);
     }
 }

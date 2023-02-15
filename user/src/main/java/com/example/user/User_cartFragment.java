@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,6 +22,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,11 +32,13 @@ public class User_cartFragment extends Fragment {
 
     Context context;
     private RecyclerView recyclerView;
+    TextView total, removeAll;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference reference;
     private FirebaseAuth mAuth;
     List<CartRVModal> usersList;
     AdapterCart adapterCart;
+    String uid;
 
 
     public User_cartFragment() {
@@ -55,9 +59,12 @@ public class User_cartFragment extends Fragment {
         // Inflate the layout for this fragment
        View view = inflater.inflate(R.layout.fragment_user_cart, container, false);
         recyclerView = view.findViewById(R.id.cart_rv);
+        total = view.findViewById(R.id.total_prize);
+        removeAll = view.findViewById(R.id.remove_all);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
+        uid = FirebaseAuth.getInstance().getUid();
         //on below line we are getting database reference.
 
         reference = FirebaseDatabase.getInstance().getReference("Cart");
@@ -77,8 +84,6 @@ public class User_cartFragment extends Fragment {
 
 
     private void getAllUsers() {
-        final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-
 //        reference.addValueEventListener(new ValueEventListener() {
 //            @Override
 //            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -101,7 +106,8 @@ public class User_cartFragment extends Fragment {
 //            }
 //        });
 
-        reference.addChildEventListener(new ChildEventListener() {
+        Query query = reference.orderByChild("userID").equalTo(uid);
+        query.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 //on below line we are hiding our progress bar.

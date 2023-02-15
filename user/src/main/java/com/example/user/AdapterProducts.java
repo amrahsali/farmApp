@@ -74,7 +74,7 @@ public class AdapterProducts extends RecyclerView.Adapter<AdapterProducts.MyHold
                         hashMap.put("price", productPrice);
                         hashMap.put("uid", hisuid);
 
-                        databaseReference.child(firebaseAuth.getUid()).updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        databaseReference.child(productName).updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 Log.d(TAG, "Profile updated.");

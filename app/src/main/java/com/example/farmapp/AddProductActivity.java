@@ -35,14 +35,13 @@ import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
-import java.util.HashMap;
 import java.util.Objects;
 
 public class AddProductActivity extends AppCompatActivity {
 
     // creating variables for our button, edit text,
     // firebase database, database reference, progress bar.
-    private Button addCourseBtn;
+    private Button addProductBtn;
     int SELECT_PICTURE = 200;
     private TextInputEditText courseNameEdt, courseDescEdt, coursePriceEdt;
     ImageView productImgBtn;
@@ -61,7 +60,7 @@ public class AddProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
         // initializing all our variables.
-        addCourseBtn = findViewById(R.id.idBtnAddCourse);
+        addProductBtn = findViewById(R.id.idBtnAddCourse);
         courseNameEdt = findViewById(R.id.idEdtCourseName);
         courseDescEdt = findViewById(R.id.idEdtCourseDescription);
         coursePriceEdt = findViewById(R.id.idEdtCoursePrice);
@@ -99,7 +98,7 @@ public class AddProductActivity extends AppCompatActivity {
         });
 
         // adding click listener for our add course button.
-        addCourseBtn.setOnClickListener(new View.OnClickListener() {
+        addProductBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 loadingPB.setVisibility(View.VISIBLE);

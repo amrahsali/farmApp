@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,6 +28,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
@@ -99,33 +101,61 @@ public class User_productFragment extends Fragment {
 
         //get user profile
         FirebaseUser user = mAuth.getCurrentUser();
-        if (user != null) {
-            for (UserInfo profile : user.getProviderData()) {
-                // Id of the provider (ex: google.com)
-                String providerId = profile.getProviderId();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
 
-                // UID specific to the provider
-                String uid = profile.getUid();
-
-                // Name, email address, and profile photo Url
-                String name = profile.getDisplayName();
-                String email = profile.getEmail();
-                Uri photoUrl = profile.getPhotoUrl();
-
-
-
-                if (profile.getPhotoUrl() != null){
-
-                    //product_profile_img.setImageURI(photoUrl);
-                    Picasso.get().load(photoUrl).into(product_profile_img);
-                }
-                if (profile.getDisplayName() != null){
+        assert user != null;
+        Query query = ref.orderByChild("email").equalTo(user.getEmail());
+        //Toast.makeText(getActivity(), firebaseUser.getEmail(), Toast.LENGTH_SHORT).show();
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    String name = "" + dataSnapshot1.child("fullname").getValue();
+                    String image = "" + dataSnapshot1.child("image").getValue();
                     product_profile_name.setText(name);
-                }
+                    try {
+                        Glide.with(getActivity()).load(image).into(product_profile_img);
+                    } catch (Exception e) {
 
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        }
+        });
+
+        //get user profile
+//        FirebaseUser user = mAuth.getCurrentUser();
+//        if (user != null) {
+//            for (UserInfo profile : user.getProviderData()) {
+//                // Id of the provider (ex: google.com)
+//                String providerId = profile.getProviderId();
+//
+//                // UID specific to the provider
+//                String uid = profile.getUid();
+//
+//                // Name, email address, and profile photo Url
+//                String name = profile.getDisplayName();
+//                String email = profile.getEmail();
+//                Uri photoUrl = profile.getPhotoUrl();
+//
+//
+//
+//                if (profile.getPhotoUrl() != null){
+//
+//                    //product_profile_img.setImageURI(photoUrl);
+//                    Picasso.get().load(photoUrl).into(product_profile_img);
+//                }
+//                if (profile.getDisplayName() != null){
+//                    product_profile_name.setText(name);
+//                }
+//
+//
+//            }
+//        }
 
         all_card.setOnClickListener( new View.OnClickListener() {
             @Override
