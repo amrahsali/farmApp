@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,7 +32,7 @@ import java.util.List;
 import javax.xml.namespace.QName;
 
 
-public class User_cartFragment extends Fragment {
+public class User_cartFragment extends Fragment implements AdapterCart.OnButtonClickListener {
 
     Context context;
     private RecyclerView recyclerView;
@@ -80,20 +81,15 @@ public class User_cartFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         //recyclerView.setAdapter(new MyRecyclerViewAdapter(1234), this);
-
-
-        ArrayList<String> idsList = new ArrayList<>();
-
-
-
-        for (int i = 0; i < recyclerView.getAdapter().getItemCount(); i++) {
-            CartRVModal item = (CartRVModal) recyclerView.getAdapter().getItem(i);
-            String itemId = item.getId();
-            idsList.add(itemId);
-        }
-
-
         recyclerView.setAdapter(adapterCart);
+
+//        ArrayList<String> idsList = new ArrayList<>();
+//
+//        for (int i = 0; i < recyclerView.getAdapter().getItemCount(); i++) {
+//            CartRVModal item = (CartRVModal) recyclerView.getAdapter().getItemId(i);
+//            String itemId = item.getId();
+//            idsList.add(itemId);
+//        }
 
         getAllUsers();
 
@@ -187,7 +183,10 @@ public class User_cartFragment extends Fragment {
     }
 
 
-
-
-
+    @Override
+    public void onButtonClick(int position) {
+        // Retrieve the ID of the item at the given position
+        long itemId = adapterCart.getItemId(position);
+        Toast.makeText(context, String.valueOf(itemId), Toast.LENGTH_SHORT).show();
+    }
 }

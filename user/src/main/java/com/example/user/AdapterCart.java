@@ -28,6 +28,8 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.MyHolder> {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     String uid;
+    OnButtonClickListener onButtonClickListener;
+
 
     public AdapterCart(List<CartRVModal> list, Context context) {
         this.context = context;
@@ -49,7 +51,7 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.MyHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull MyHolder holder, int position) {
        // final String hisuid = list.get(position).getUid();
         final int unit = 0;
         String productImage = list.get(position).getImage();
@@ -66,6 +68,9 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.MyHolder> {
                         u++;
                         holder.itemUnit.setText(String.valueOf(u));
                        // Toast.makeText(context, "this is:" + productName, Toast.LENGTH_SHORT).show();
+                        if (onButtonClickListener != null) {
+                            onButtonClickListener.onButtonClick(position);
+                        }
                     }
         });
         holder.reduceUnit.setOnClickListener(new View.OnClickListener() {
@@ -90,6 +95,11 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.MyHolder> {
     public int getItemCount() {
         return list.size();
     }
+
+    public interface OnButtonClickListener {
+        void onButtonClick(int position);
+    }
+
 
     class MyHolder extends RecyclerView.ViewHolder {
 
