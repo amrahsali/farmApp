@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -27,6 +28,8 @@ import com.google.firebase.database.Query;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.namespace.QName;
+
 
 public class User_cartFragment extends Fragment {
 
@@ -39,7 +42,7 @@ public class User_cartFragment extends Fragment {
     List<CartRVModal> usersList;
     AdapterCart adapterCart;
     String uid;
-
+    Button btn;
 
 
     public User_cartFragment() {
@@ -77,11 +80,46 @@ public class User_cartFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         //recyclerView.setAdapter(new MyRecyclerViewAdapter(1234), this);
+
+
+        ArrayList<String> idsList = new ArrayList<>();
+
+
+
+        for (int i = 0; i < recyclerView.getAdapter().getItemCount(); i++) {
+            CartRVModal item = (CartRVModal) recyclerView.getAdapter().getItem(i);
+            String itemId = item.getId();
+            idsList.add(itemId);
+        }
+
+
         recyclerView.setAdapter(adapterCart);
+
         getAllUsers();
+
+          List<Requestmodal> products;
+
+        products= new ArrayList<>();
+
+
+        btn = view.findViewById(R.id.request);
+
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                products.get(1).getName();
+                products.get(1).getImage();
+                products.get(1).getPrice();
+            }
+        });
+
+
 
         return view;
     }
+
 
 
     private void getAllUsers() {
@@ -147,4 +185,9 @@ public class User_cartFragment extends Fragment {
             }
         });
     }
+
+
+
+
+
 }

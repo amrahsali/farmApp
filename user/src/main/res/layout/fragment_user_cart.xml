@@ -17,6 +17,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/shopping_cart"
                 android:textSize="20dp"/>
+
+
+
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -90,11 +93,12 @@
 
 
                 <Button
+                    android:id="@+id/request"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="13sp"
                     android:backgroundTint="@color/green"
-                    android:text="@string/check_out"/>
+                    android:text="REQUEST"/>
 
             </LinearLayout>
 

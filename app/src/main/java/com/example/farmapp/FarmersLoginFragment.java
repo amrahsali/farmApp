@@ -26,10 +26,8 @@ import java.util.Objects;
 
 
 public class FarmersLoginFragment extends Fragment {
- Button button;
+    Button button;
     private EditText userNameEdt, passwordEdt;
-    private Button loginBtn;
-    private TextView newUserTV;
     private FirebaseAuth mAuth;
     private ProgressBar loadingPB;
 
