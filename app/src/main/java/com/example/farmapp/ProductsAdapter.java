@@ -73,6 +73,9 @@ public class  ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewH
         return courseRVModalArrayList.size();
     }
 
+    public void startListening() {
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // creating variable for our image view and text view on below line.
         private ImageView product_image;

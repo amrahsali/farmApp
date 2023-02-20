@@ -13,10 +13,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -233,6 +237,47 @@ public class ProductFragment extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+
+        getMenuInflater().inflate(R.menu.search, menu);
+        MenuItem item = menu.findItem(R.id.search);
+        SearchView searchView = (SearchView)item.getActionView();
+        super.onCreateOptionsMenu(menu, inflater);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                txtSearch(query);
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String query) {
+
+                txtSearch(query);
+
+                return false;
+            }
+        });
+
+
+
+    }
+
+    private void txtSearch(String str)
+    {
+
+        FirebaseRecyclerOptions<ProductRVModal> options =
+                new FirebaseRecyclerOptions.Build<ProductRVModal>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("products").orderByChild("name").startAt(str).endAt(str+"~"), ProductRVModal.class);
+
+        ProductsAdapter ProductsAdapter = new ProductsAdapter(options);
+                ProductsAdapter.startListening();
+                recyclerView.setAdapter(ProductsAdapter);
     }
 }
 

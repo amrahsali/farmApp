@@ -105,9 +105,9 @@ public class User_cartFragment extends Fragment implements AdapterCart.OnButtonC
             @Override
             public void onClick(View view) {
 
-                products.get(1).getName();
-                products.get(1).getImage();
-                products.get(1).getPrice();
+             //   products.get(1).getName();
+               // products.get(1).getImage();
+                //products.get(1).getPrice();
             }
         });
 
