@@ -1,5 +1,6 @@
 package com.example.farmapp;
 
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -55,6 +57,8 @@ public class ProductFragment extends Fragment {
     ImageView to_notification;
     Button addToCart;
     String uid;
+    private MenuItem menuItem;
+    private SearchView searchView;
 
 
 
@@ -194,6 +198,10 @@ public class ProductFragment extends Fragment {
         return view;
     }
 
+
+
+
+
     private void getProducts() {
         //on below line clearing our list.
         courseRVModalArrayList.clear();
@@ -240,12 +248,23 @@ public class ProductFragment extends Fragment {
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
 
-        getMenuInflater().inflate(R.menu.search, menu);
+        inflater.inflate(R.menu.search, menu);
         MenuItem item = menu.findItem(R.id.search);
-        SearchView searchView = (SearchView)item.getActionView();
-        super.onCreateOptionsMenu(menu, inflater);
+        searchView  =  (SearchView) MenuItemCompat.getActionView(menuItem);
+        searchView.setIconified(true);
+
+        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
+
+
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -263,6 +282,7 @@ public class ProductFragment extends Fragment {
                 return false;
             }
         });
+        super.onCreateOptionsMenu(menu, inflater);
 
 
 
@@ -279,6 +299,7 @@ public class ProductFragment extends Fragment {
                 ProductsAdapter.startListening();
                 recyclerView.setAdapter(ProductsAdapter);
     }
+
 }
 
 
