@@ -91,6 +91,7 @@
                 android:src="@drawable/farmers" />
 
             <TextView
+                android:id="@+id/are_you_a_farmer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="15dp"
@@ -110,6 +111,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
+                android:id="@+id/search_here"
                 android:paddingStart="12dp"
                 android:drawableStart="@drawable/ic_round_search_24"
                 android:layout_width="match_parent"

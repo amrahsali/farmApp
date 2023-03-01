@@ -4,6 +4,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -43,7 +44,7 @@ import java.util.Objects;
 
 
 public class ProductFragment extends Fragment {
-    TextView all_card, vegies,fruit, grain, tuber, product_profile_name;
+    TextView all_card, vegies,fruit, grain, tuber, product_profile_name, are_you_a_farmer,search_here;
     ImageView product_profile_img;
     Context context;
     private RecyclerView recyclerView;
@@ -59,6 +60,10 @@ public class ProductFragment extends Fragment {
     String uid;
     private MenuItem menuItem;
     private SearchView searchView;
+    MediaPlayer mMediaPlayer;
+
+
+
 
 
 
@@ -70,9 +75,30 @@ public class ProductFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 
-
         // Inflate the layout for this fragment
-         View view = inflater.inflate(R.layout.fragment_product, container, false);
+        View view = inflater.inflate(R.layout.fragment_product, container, false);
+
+        are_you_a_farmer = view.findViewById(R.id.are_you_a_farmer);
+
+        mMediaPlayer = MediaPlayer.create(getContext(), R.raw.kai_ke_mai_anfani_ne);
+        are_you_a_farmer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMediaPlayer.start();
+            }
+        });
+
+//        search_here  = view.findViewById(R.id.search_here);
+//
+//        mMediaPlayer = MediaPlayer.create(getContext(),R.raw.nema);
+//        search_here.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                mMediaPlayer.start();
+//            }
+//        });
+//
+//
 
         all_card = view.findViewById(R.id.all_card);
         vegies = view.findViewById(R.id.vegies);
@@ -90,6 +116,7 @@ public class ProductFragment extends Fragment {
         //on below line we are getting database reference.
         databaseReference = firebaseDatabase.getReference("Products");
         addCourseFAB = view.findViewById(R.id.idFABAddCourse);
+
 
         to_notification = view.findViewById(R.id.to_notification);
         to_notification.setOnClickListener(new View.OnClickListener() {
@@ -195,6 +222,10 @@ public class ProductFragment extends Fragment {
         recyclerView.setAdapter(courseRVAdapter);
         getProducts();
 
+
+
+
+
         return view;
     }
 
@@ -291,13 +322,13 @@ public class ProductFragment extends Fragment {
     private void txtSearch(String str)
     {
 
-        FirebaseRecyclerOptions<ProductRVModal> options =
-                new FirebaseRecyclerOptions.Build<ProductRVModal>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("products").orderByChild("name").startAt(str).endAt(str+"~"), ProductRVModal.class);
+        //FirebaseRecyclerOptions<ProductRVModal> options =
+               // new FirebaseRecyclerOptions.Build<ProductRVModal>()
+                       // .setQuery(FirebaseDatabase.getInstance().getReference().child("products").orderByChild("name").startAt(str).endAt(str+"~"), ProductRVModal.class);
 
-        ProductsAdapter ProductsAdapter = new ProductsAdapter(options);
-                ProductsAdapter.startListening();
-                recyclerView.setAdapter(ProductsAdapter);
+      //  ProductsAdapter ProductsAdapter = new ProductsAdapter(options);
+        //        ProductsAdapter.startListening();
+         //       recyclerView.setAdapter(ProductsAdapter);
     }
 
 }

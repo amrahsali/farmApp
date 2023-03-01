@@ -10,7 +10,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
-        android:layout_height="400dp"
+        android:layout_height="360dp"
         android:elevation="6dp"
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
@@ -57,7 +57,7 @@
             android:background="@null"
             android:drawableStart="@drawable/ic_baseline_person_24"
             android:drawablePadding="10dp"
-            android:hint="Full name"/>
+            android:hint="@string/full_name"/>
 
 
     </LinearLayout>
@@ -87,7 +87,7 @@
             android:background="@null"
             android:drawableStart="@drawable/ic_sharp_email_24"
             android:drawablePadding="10dp"
-            android:hint="@string/phone2"/>
+            android:hint="@string/email1"/>
 
 
 
@@ -110,7 +110,7 @@
         android:background="@null"
         android:drawableStart="@drawable/ic_round_security_24"
         android:drawablePadding="10dp"
-        android:hint="@string/enter_otp"/>
+        android:hint="@string/password"/>
 
 </LinearLayout>
 

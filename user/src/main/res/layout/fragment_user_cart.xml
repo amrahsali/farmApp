@@ -98,7 +98,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="13sp"
                     android:backgroundTint="@color/green"
-                    android:text="REQUEST"/>
+                    android:text="@string/request"/>
 
             </LinearLayout>
 

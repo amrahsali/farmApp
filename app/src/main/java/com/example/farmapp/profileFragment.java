@@ -6,6 +6,7 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,11 +17,13 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -47,7 +50,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 
 
-public class profileFragment extends Fragment {
+public class profileFragment extends Fragment  {
     private FirebaseAuth mAuth;
     Button log_out_btn, update_btn;
     EditText username, phoneNumber, homeAddress, farmAddress, emailad;
@@ -56,6 +59,9 @@ public class profileFragment extends Fragment {
     Uri selectedImageUri, imageuri;
     DatabaseReference databaseReference;
     FirebaseDatabase firebaseDatabase;
+    MediaPlayer mMediaPlayer;
+    TextView name,email;
+
 
 
     public profileFragment(){
@@ -64,6 +70,9 @@ public class profileFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+
+
         // Inflate the layout for this fragment
         mAuth = FirebaseAuth.getInstance();
 
@@ -79,6 +88,27 @@ public class profileFragment extends Fragment {
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("Farmers");
 
+
+        name = view.findViewById(R.id.name);
+
+        mMediaPlayer = MediaPlayer.create(getContext(), R.raw.suna);
+        name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMediaPlayer.start();
+            }
+        });
+
+
+//        email = view.findViewById(R.id.email);
+//
+//        mMediaPlayer = MediaPlayer.create(getContext(), R.raw.imel);
+//        email.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                mMediaPlayer.stop();
+//            }
+//        });
 
         profileimg.setOnClickListener(new View.OnClickListener() {
             @Override

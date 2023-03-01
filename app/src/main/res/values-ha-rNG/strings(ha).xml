@@ -16,7 +16,7 @@
     <string name="grains">hatsi</string>
     <string name="tubers">tubers</string>
     <string name="my_profile">bayanai</string>
-    <string name="edit">gera</string>
+    <string name="edit">shirya</string>
     <string name="name">suna:</string>
     <string name="phone_number">numbar waya:</string>
     <string name="home_address">adereshin gida:</string>
@@ -66,7 +66,14 @@
     <string name="forgot_passwordlg">Manta kalmar sirri?</string>
     <string name="log_inlg">Shiga</string>
 
+    <string name="full_name">sunaye</string>
+    <string name="phone3">Numbar waya</string>
+    <string name="password">kalmar sirri</string>
+    <string name="email1">imel</string>
 
+    <string name="accept">karba</string>
+    <string name="reject">ki</string>
+    <string name="update">sabunta</string>
 
 
 

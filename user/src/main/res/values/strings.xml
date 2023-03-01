@@ -39,4 +39,7 @@
     <string name="log_in3">log in</string>
     <string name="mangoes">Mangoes</string>
     <string name="_33kg_of_sweet_mango_available_for_sale">33kg of sweet mango available for sale</string>
+    <string name="request">REQUEST</string>
+    <string name="update1">Update</string>
+    <string name="logout">Logout</string>
 </resources>

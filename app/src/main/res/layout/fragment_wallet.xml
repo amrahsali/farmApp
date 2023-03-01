@@ -48,10 +48,11 @@
 
                 </LinearLayout>
                 <TextView
+                    android:id="@+id/name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="10dp"
-                    android:text="name"
+                    android:text="@string/name1"
                     android:textSize="20dp" />
 
                 <LinearLayout
@@ -69,6 +70,7 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/total_balance_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="10dp"

@@ -239,14 +239,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
-                        android:text="Update"
+                        android:text="@string/update1"
                         android:layout_gravity="center"/>
 
                     <Button
                         android:id="@+id/logoutbutn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Logout"
+                        android:text="@string/logout"
                         android:onClick="logOut"
                         android:layout_gravity="center"/>
                 </LinearLayout>

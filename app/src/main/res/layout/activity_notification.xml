@@ -108,7 +108,7 @@
         <Button
             android:layout_width="170dp"
             android:layout_height="wrap_content"
-            android:text="Accept"
+            android:text="@string/accept"
             android:layout_gravity="center"/>
         <Space
             android:layout_width="40dp"
@@ -118,7 +118,7 @@
         <Button
             android:layout_width="170dp"
             android:layout_height="wrap_content"
-            android:text="reject"
+            android:text="@string/reject"
             android:layout_gravity="center"/>
     </LinearLayout>
 

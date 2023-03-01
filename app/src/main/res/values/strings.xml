@@ -64,4 +64,12 @@
     <string name="phonelg">phone</string>
     <string name="forgot_passwordlg">Forgot password?</string>
     <string name="log_inlg">Log in</string>
+    <string name="full_name">Full name</string>
+    <string name="phone3">phone</string>
+    <string name="password">password</string>
+    <string name="email1">email</string>
+    <string name="accept">Accept</string>
+    <string name="reject">reject</string>
+    <string name="update">Update</string>
+    <string name="name1">name</string>
 </resources>
